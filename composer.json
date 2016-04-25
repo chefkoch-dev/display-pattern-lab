@@ -1,0 +1,7 @@
+{
+    "require": {
+        "symfony/finder": "~3.0.0",
+        "twig/twig": "~1.24.0",
+        "symfony/yaml": "~3.0.0"
+    }
+}

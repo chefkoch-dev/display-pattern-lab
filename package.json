@@ -1,0 +1,11 @@
+{
+  "name": "living-styleguide",
+  "version": "1.0.0",
+  "dependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.8.6",
+    "gulp-sass": "^2.1.1",
+    "gulp-shell": "^0.5.2",
+    "gulp-concat": "^2.6.0"
+  }
+}

@@ -1,0 +1,5 @@
+/.idea
+/vendor
+/output
+/node_modules
+/composer.phar
