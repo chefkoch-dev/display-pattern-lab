@@ -7,7 +7,7 @@ var shell = require('gulp-shell');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 
-gulp.task('serve', ['twig', 'sass'], function() {
+gulp.task('serve', ['twig', 'sass', 'lab-sass'], function() {
 
     browserSync.init({
         server: {
@@ -23,7 +23,15 @@ gulp.task('serve', ['twig', 'sass'], function() {
     }
     gulp.watch(config.twig.rootDirectory + "/**/*.twig", ['twig']);
     gulp.watch(config.twig.rootDirectory + "/**/*.yml", ['twig']);
+    gulp.watch("scss/**/*.scss", ['lab-sass']);
     gulp.watch("output/index.html").on('change', browserSync.reload);
+});
+
+gulp.task('lab-sass', function() {
+    return gulp.src('scss/lab.scss')
+        .pipe(sass())
+        .pipe(gulp.dest("output/lab"))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('sass', function() {
