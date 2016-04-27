@@ -1,0 +1,14 @@
+{
+  "scss": {
+    "indexFile": "../display-patterns/styles/main.scss",
+    "includePaths": [
+      "../display-patterns"
+    ]
+  },
+  "twig": {
+    "rootDirectory": "../display-patterns/patterns",
+    "namespaces": {
+      "display-patterns": "../display-patterns/patterns"
+    }
+  }
+}

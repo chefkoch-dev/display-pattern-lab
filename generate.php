@@ -2,18 +2,25 @@
 
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$pathToDisplayPatterns = $argv[1];
+$config = json_decode($argv[1], true);
 
 $finder = new \Symfony\Component\Finder\Finder();
 $finder = $finder
-    ->in(__DIR__ . '/' . $pathToDisplayPatterns)
+    ->in($config['twig']['rootDirectory'])
     ->name('*.twig');
 
-$twig = new Twig_Environment(
-    new Twig_Loader_Filesystem(array(__DIR__ . '/' . $pathToDisplayPatterns))
-);
+$loader = null;
+foreach ($config['twig']['namespaces'] as $namespace => $path) {
+    if (!$loader) {
+        $loader = new Twig_Loader_Filesystem($path);
+    }
+    $loader->addPath($path, $namespace);
+}
+$twig = new Twig_Environment($loader);
 
-$output = '<html><head><link rel="stylesheet" type="text/css" href="/css/styles.css" /></head><body>';
+$indexFileName = basename($config['scss']['indexFile']);
+
+$output = '<html><head><link rel="stylesheet" type="text/css" href="/css/' . str_replace('.scss', '.css', $indexFileName) . '" /></head><body>';
 
 foreach ($finder as $file) {
     /** @var $file \Symfony\Component\Finder\SplFileInfo */
@@ -34,5 +41,7 @@ foreach ($finder as $file) {
 }
 
 $output .= '</body>';
+
+@mkdir(__DIR__ . '/output', 0777, true);
 
 file_put_contents(__DIR__ . '/output/index.html', $output);

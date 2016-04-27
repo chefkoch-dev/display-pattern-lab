@@ -1,5 +1,5 @@
 
-var pathToDisplayPatterns = 'vendor/chefkoch/display-patterns';
+var config = require('./gulpconfig.json');
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
@@ -18,17 +18,18 @@ gulp.task('serve', ['twig', 'sass'], function() {
         open: "external"
     });
 
-    gulp.watch(pathToDisplayPatterns + "/**/*.scss", ['sass']);
-    gulp.watch(pathToDisplayPatterns + "/**/*.twig", ['twig']);
-    gulp.watch(pathToDisplayPatterns + "/**/*.yml", ['twig']);
+    for (var scssIncludePath in config.scss.includePaths) {
+        gulp.watch(scssIncludePath + "/**/*.scss", ['sass']);
+    }
+    gulp.watch(config.twig.rootDirectory + "/**/*.twig", ['twig']);
+    gulp.watch(config.twig.rootDirectory + "/**/*.yml", ['twig']);
     gulp.watch("output/index.html").on('change', browserSync.reload);
 });
 
 gulp.task('sass', function() {
-    return gulp.src(pathToDisplayPatterns + "/**/[^_]*.scss")
-        .pipe(concat("styles.scss"))
+    return gulp.src(config.scss.indexFile)
         .pipe(sass({
-            includePaths: pathToDisplayPatterns
+            includePaths: config.scss.includePaths
         }))
         .pipe(gulp.dest("output/css"))
         .pipe(browserSync.stream());
@@ -36,7 +37,7 @@ gulp.task('sass', function() {
 
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
-        .pipe(shell(['php generate.php ' + pathToDisplayPatterns]))
+        .pipe(shell(['php generate.php \'' + JSON.stringify(config) + '\'']))
 });
 
 gulp.task('default', ['serve']);
