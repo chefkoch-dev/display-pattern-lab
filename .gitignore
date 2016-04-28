@@ -3,4 +3,4 @@
 /output
 /node_modules
 /composer.phar
-/gulpconfig.json
+/.vagrant

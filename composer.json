@@ -1,7 +1,17 @@
 {
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://fridge.app.intern.dev.chefkoch.de"
+        }
+    ],
     "require": {
         "symfony/finder": "~3.0.0",
         "twig/twig": "~1.24.0",
-        "symfony/yaml": "~3.0.0"
+        "symfony/yaml": "~3.0.0",
+        "chefkoch/display-patterns": "dev-master"
+    },
+    "config": {
+        "secure-http": false
     }
 }

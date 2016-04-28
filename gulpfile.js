@@ -15,7 +15,8 @@ gulp.task('serve', ['twig', 'sass', 'lab-sass'], function() {
         },
         port: 8080,
         ghostMode: false,
-        open: "external"
+        open: false,
+        host: "172.123.123.123"
     });
 
     for (var scssIncludePath in config.scss.includePaths) {

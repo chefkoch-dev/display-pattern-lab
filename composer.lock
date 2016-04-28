@@ -4,9 +4,26 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0d3d84491d6b679668cbdfda118ec58c",
-    "content-hash": "6082f19837d55a4688f1001d49328291",
+    "hash": "7f2fd2462bad15c096f876f77d7b4a45",
+    "content-hash": "25177da8fe532a08ae1b1f29ecdb150b",
     "packages": [
+        {
+            "name": "chefkoch/display-patterns",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
+                "reference": "f9c330b2d24f39ad0b15fd61f3dbad8048130ff1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-e1d559.zip",
+                "reference": "f9c330b2d24f39ad0b15fd61f3dbad8048130ff1",
+                "shasum": "bb70229f28c8d11a3a72f59ffe8f66b5b1d0ce68"
+            },
+            "type": "library",
+            "time": "2016-04-26 15:20:53"
+        },
         {
             "name": "symfony/finder",
             "version": "v3.0.4",
@@ -170,7 +187,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "chefkoch/display-patterns": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
