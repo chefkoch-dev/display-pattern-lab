@@ -1,9 +1,7 @@
 {
   "scss": {
     "indexFile": "vendor/chefkoch/display-patterns/styles/main.scss",
-    "includePaths": [
-      "vendor/chefkoch/display-patterns"
-    ]
+    "rootDirectory": "vendor/chefkoch/display-patterns"
   },
   "twig": {
     "rootDirectory": "vendor/chefkoch/display-patterns/patterns",
