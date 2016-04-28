@@ -6,6 +6,9 @@
     "gulp": "^3.8.6",
     "gulp-sass": "^2.1.1",
     "gulp-shell": "^0.5.2",
-    "gulp-concat": "^2.6.0"
+    "gulp-concat": "^2.6.0",
+    "gulp-watch": "^4.3.5",
+    "gulp-plumber": "^1.1.0",
+    "gulp-batch": "1.0.5"
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 $config = json_decode($argv[1], true);
 
@@ -9,7 +9,7 @@ $finder = $finder
     ->in($config['twig']['rootDirectory'])
     ->name('*.twig');
 
-@mkdir(__DIR__ . '/output', 0777, true);
+@mkdir(__DIR__ . '/../output', 0777, true);
 
 $loader = null;
 foreach ($config['twig']['namespaces'] as $namespace => $path) {
@@ -43,10 +43,10 @@ foreach ($finder as $file) {
     }
 
     $relativeDestinationFile = str_replace('.twig', '', $file->getRelativePathname());
-    $destinationFile = __DIR__ . '/output/' . $relativeDestinationFile;
-    $destinationDir = __DIR__ . '/output/' . $file->getRelativePath();
+    $destinationFile = __DIR__ . '/../output/' . $relativeDestinationFile;
+    $destinationDir = __DIR__ . '/../output/' . $file->getRelativePath();
     @mkdir($destinationDir, 0777, true);
-    file_put_contents($destinationFile, $twig->render($file->getRelativePathname(), $data));
+    #file_put_contents($destinationFile, $twig->render($file->getRelativePathname(), $data));
 
     $documents[] = $relativeDestinationFile;
 }
@@ -58,4 +58,4 @@ foreach ($documents as $document) {
 
 $output .= '</body>';
 
-file_put_contents(__DIR__ . '/output/index.html', $output);
+file_put_contents(__DIR__ . '/../output/index.html', $output);

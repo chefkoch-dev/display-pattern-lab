@@ -6,6 +6,9 @@ var browserSync = require('browser-sync').create();
 var shell = require('gulp-shell');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var watch = require('gulp-watch');
+var plumber = require('gulp-plumber');
+var batch = require('gulp-batch');
 
 gulp.task('serve', ['twig', 'sass', 'lab-sass'], function() {
 
@@ -20,16 +23,26 @@ gulp.task('serve', ['twig', 'sass', 'lab-sass'], function() {
     });
 
     for (var scssIncludePath in config.scss.includePaths) {
-        gulp.watch(scssIncludePath + "/**/*.scss", ['sass']);
+        watch(scssIncludePath + "/**/*.scss", function() { gulp.start('sass'); });
     }
-    gulp.watch(config.twig.rootDirectory + "/**/*.twig", ['twig']);
-    gulp.watch(config.twig.rootDirectory + "/**/*.yml", ['twig']);
-    gulp.watch("scss/**/*.scss", ['lab-sass']);
-    gulp.watch("output/index.html").on('change', browserSync.reload);
+    watch(
+        [
+            'generator/**/*.php',
+            config.twig.rootDirectory + "/**/*.twig",
+            config.twig.rootDirectory + "/**/*.yml"
+        ],
+        batch(function (events, done) {
+            gulp.start('twig', done)
+        })
+    );
+
+    watch("scss/**/*.scss", batch(function(events, done) { gulp.start('lab-sass', done) }));
+    watch("output/index.html", batch(browserSync.reload));
 });
 
 gulp.task('lab-sass', function() {
     return gulp.src('scss/lab.scss')
+        .pipe(plumber())
         .pipe(sass())
         .pipe(gulp.dest("output/lab"))
         .pipe(browserSync.stream());
@@ -37,6 +50,7 @@ gulp.task('lab-sass', function() {
 
 gulp.task('sass', function() {
     return gulp.src(config.scss.indexFile)
+        .pipe(plumber())
         .pipe(sass({
             includePaths: config.scss.includePaths
         }))
@@ -46,7 +60,8 @@ gulp.task('sass', function() {
 
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
-        .pipe(shell(['php generate.php \'' + JSON.stringify(config) + '\'']))
+        .pipe(plumber())
+        .pipe(shell(['php generator/generate.php \'' + JSON.stringify(config) + '\'']))
 });
 
 gulp.task('default', ['serve']);
