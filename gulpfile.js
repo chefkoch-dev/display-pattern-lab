@@ -20,7 +20,7 @@ gulp.task('serve', ['twig','sass', 'lab-sass', 'watch'], function() {
         server: {
             baseDir: "output"
         },
-        port: 8080,
+        port: 8181,
         ghostMode: false,
         open: false,
         host: "172.123.123.123"
