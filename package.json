@@ -12,5 +12,8 @@
     "gulp-shell": "^0.5.2",
     "gulp-watch": "^4.3.5",
     "interact.js": "^1.2.6"
+  },
+  "scripts": {
+    "gulp": "node_modules/.bin/gulp"
   }
 }
