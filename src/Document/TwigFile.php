@@ -42,7 +42,13 @@ class TwigFile extends Base
             $data = array_merge($data, json_decode(file_get_contents($dataFileJson), true));
         }
 
-        $html .= $this->twig->render($this->getFile()->getRelativePathname(), $data);
+        try {
+
+            $html .= $this->twig->render($this->getFile()->getRelativePathname(), $data);
+
+        } catch (\Exception $e) {
+            $html = 'Pattern could not be rendered: ' . $e->getMessage();
+        }
 
         $html .= '</bod></html>';
 
