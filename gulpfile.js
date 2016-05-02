@@ -31,7 +31,7 @@ gulp.task('serve', ['twig','sass', 'lab-sass', 'watch'], function() {
 
 gulp.task('watch', function(){
     
-    watch([
+    gulp.watch([
       'src/**/*.php',
       config.twig.rootDirectory + "/**/*.twig",
       config.twig.rootDirectory + "/**/*.yml"
@@ -41,15 +41,15 @@ gulp.task('watch', function(){
     }))
     
 
-    watch(config.scss.rootDirectory + "/**/*.scss", function() { gulp.start('sass'); });
+    gulp.watch(config.scss.rootDirectory + "/**/*.scss", function() { gulp.start('sass'); });
     
     
-    watch("scss/**/*.scss", batch(function(events, done){ 
+    gulp.watch("scss/**/*.scss", batch(function(events, done){ 
         gulp.start('lab-sass', done) 
     }));
     
     
-    watch("output/index.html", batch(function(events, done){
+    gulp.watch("output/index.html", batch(function(events, done){
         browserSync.reload();
         done()
     }));
