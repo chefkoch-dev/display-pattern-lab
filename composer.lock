@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b247f3f440272ea48ab032b4eaa524d2",
-    "content-hash": "25177da8fe532a08ae1b1f29ecdb150b",
+    "hash": "86206d07808e990f5e8b110b78084a65",
+    "content-hash": "c849a7ed8eb45a531ecb8ab3c0a90033",
     "packages": [
         {
             "name": "chefkoch/display-patterns",
@@ -13,16 +13,67 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "6ba83b9fcab4570cc854490f9b5d668c846db5fd"
+                "reference": "bb8a8a138c92c7aca9d4dc34b1379c30f1e8811f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-a22e41.zip",
-                "reference": "6ba83b9fcab4570cc854490f9b5d668c846db5fd",
-                "shasum": "d42630f567991245631bb85f5bd3324a286a82ad"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-f2c70e.zip",
+                "reference": "bb8a8a138c92c7aca9d4dc34b1379c30f1e8811f",
+                "shasum": "4fec5812e120b1d994f5b0e3b6c7c48d1bcece04"
             },
             "type": "library",
-            "time": "2016-05-02 14:42:46"
+            "time": "2016-05-02 15:48:02"
+        },
+        {
+            "name": "michelf/php-markdown",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michelf/php-markdown.git",
+                "reference": "156e56ee036505ec637d761ee62dc425d807183c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/156e56ee036505ec637d761ee62dc425d807183c",
+                "reference": "156e56ee036505ec637d761ee62dc425d807183c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-lib": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Michelf": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "https://michelf.ca/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "https://daringfireball.net/"
+                }
+            ],
+            "description": "PHP Markdown",
+            "homepage": "https://michelf.ca/projects/php-markdown/",
+            "keywords": [
+                "markdown"
+            ],
+            "time": "2015-12-24 01:37:31"
         },
         {
             "name": "symfony/finder",

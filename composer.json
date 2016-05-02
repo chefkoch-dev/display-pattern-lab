@@ -9,7 +9,8 @@
         "symfony/finder": "~3.0.0",
         "twig/twig": "~1.24.0",
         "symfony/yaml": "~3.0.0",
-        "chefkoch/display-patterns": "dev-master"
+        "chefkoch/display-patterns": "dev-master",
+        "michelf/php-markdown": "~1.6.0"
     },
     "config": {
         "secure-http": false
