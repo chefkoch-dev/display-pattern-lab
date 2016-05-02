@@ -13,5 +13,10 @@
     },
     "config": {
         "secure-http": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Chefkoch\\DisplayPatternLab\\": "src"
+        }
     }
 }

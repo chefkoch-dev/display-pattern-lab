@@ -20,7 +20,7 @@ gulp.task('serve', ['twig','sass', 'lab-sass', 'watch'], function() {
         server: {
             baseDir: "output"
         },
-        port: 8080,
+        port: 80,
         ghostMode: false,
         open: false,
         host: "172.123.123.123"
@@ -32,7 +32,7 @@ gulp.task('serve', ['twig','sass', 'lab-sass', 'watch'], function() {
 gulp.task('watch', function(){
     
     watch([
-      'generator/**/*.php',
+      'src/**/*.php',
       config.twig.rootDirectory + "/**/*.twig",
       config.twig.rootDirectory + "/**/*.yml"
     ], 
@@ -41,7 +41,7 @@ gulp.task('watch', function(){
     }))
     
 
-    watch(config.scss.rootDirectory+"/**/**/*.scss", function() { gulp.start('sass'); });
+    watch(config.scss.rootDirectory + "/**/*.scss", function() { gulp.start('sass'); });
     
     
     watch("scss/**/*.scss", batch(function(events, done){ 
@@ -79,5 +79,5 @@ gulp.task('sass', function() {
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
-        .pipe(shell(['php generator/generate.php \'' + JSON.stringify(config) + '\'']))
+        .pipe(shell(['php src/generate.php \'' + JSON.stringify(config) + '\'']))
 });

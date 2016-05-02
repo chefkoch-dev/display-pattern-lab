@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7f2fd2462bad15c096f876f77d7b4a45",
+    "hash": "b247f3f440272ea48ab032b4eaa524d2",
     "content-hash": "25177da8fe532a08ae1b1f29ecdb150b",
     "packages": [
         {
@@ -13,16 +13,16 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "f9c330b2d24f39ad0b15fd61f3dbad8048130ff1"
+                "reference": "12e8bdf6a603e9584752c8f7503c434b078f6c2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-e1d559.zip",
-                "reference": "f9c330b2d24f39ad0b15fd61f3dbad8048130ff1",
-                "shasum": "bb70229f28c8d11a3a72f59ffe8f66b5b1d0ce68"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-8fff0e.zip",
+                "reference": "12e8bdf6a603e9584752c8f7503c434b078f6c2e",
+                "shasum": "5e25ea0ca4eb5a032b085fb277565538a38b2900"
             },
             "type": "library",
-            "time": "2016-04-26 15:20:53"
+            "time": "2016-04-29 11:29:29"
         },
         {
             "name": "symfony/finder",

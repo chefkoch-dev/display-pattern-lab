@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -ti --rm -p 8080:8080 -p 3001:3001 -v $(pwd):$(pwd) -w $(pwd) dr.chefkoch.net/display-pattern-lab-dev node_modules/.bin/gulp "$@"
+docker run -ti --rm -p 80:80 -p 3001:3001 -v $(pwd):$(pwd) -w $(pwd) dr.chefkoch.net/display-pattern-lab-dev node_modules/.bin/gulp "$@"
