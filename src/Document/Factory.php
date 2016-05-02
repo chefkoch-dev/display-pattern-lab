@@ -63,8 +63,10 @@ class Factory
                     }
                 }
                 return $directory;
-            case preg_match('(.twig$)', $file->getBasename()):
+            case preg_match('(\.twig$)', $file->getBasename()):
                 return new TwigFile($file, $this->twig, $this->cssFile);
+            case preg_match('(\.md$)', $file->getBasename()):
+                return new MarkdownFile($file);
             default:
                 return new UnknownFile($file);
         }

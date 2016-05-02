@@ -34,7 +34,8 @@ gulp.task('watch', function(){
     gulp.watch([
       'src/**/*.php',
       config.twig.rootDirectory + "/**/*.twig",
-      config.twig.rootDirectory + "/**/*.yml"
+      config.twig.rootDirectory + "/**/*.yml",
+      config.twig.rootDirectory + "/**/*.md"
     ], 
     batch(function (events, done) {
       gulp.start('twig', done)
