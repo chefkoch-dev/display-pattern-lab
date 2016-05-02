@@ -3,6 +3,10 @@
     "indexFile": "vendor/chefkoch/display-patterns/styles/main.scss",
     "rootDirectory": "vendor/chefkoch/display-patterns"
   },
+  "js": {
+    "indexFile": "js/index.js",
+    "rootDirectory": "js"
+  },
   "twig": {
     "rootDirectory": "vendor/chefkoch/display-patterns/patterns",
     "namespaces": {

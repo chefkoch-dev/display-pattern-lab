@@ -20,7 +20,7 @@ $factory = new \Chefkoch\DisplayPatternLab\Document\Factory($twig, $cssFile);
 
 $tree = $factory->start($config['twig']['rootDirectory']);
 
-$output = '<html><head><link rel="stylesheet" type="text/css" href="/lab/lab.css" /></head><body>';
+$output = '<html><head><link rel="stylesheet" type="text/css" href="/lab/lab.css" /><script src="/lab/lab.js"></script></head><body>';
 $output .= $tree->render();
 $output .= '</body>';
 

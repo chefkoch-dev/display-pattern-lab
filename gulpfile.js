@@ -14,7 +14,7 @@ var batch = require('gulp-batch');
 gulp.task('default', ['serve']);
 
 
-gulp.task('serve', ['twig','sass', 'lab-sass', 'watch'], function() {
+gulp.task('serve', ['twig', 'sass', 'js', 'lab-sass', 'watch'], function() {
 
     browserSync.init({
         server: {
@@ -53,6 +53,10 @@ gulp.task('watch', function(){
         browserSync.reload();
         done()
     }));
+    
+    
+    gulp.watch(config.js.rootDirectory + "/**/*.js", function() { gulp.start('js');browserSync.reload(); });
+
 })
 
 
@@ -75,9 +79,15 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
-
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
         .pipe(shell(['php src/generate.php \'' + JSON.stringify(config) + '\'']))
+});
+
+
+gulp.task('js', function() {
+    return gulp.src('', {read: false})
+        .pipe(plumber())
+        .pipe(shell('node_modules/.bin/browserify js/index.js -o output/lab/lab.js'))
 });

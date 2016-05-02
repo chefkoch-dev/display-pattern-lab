@@ -52,6 +52,6 @@ class TwigFile extends Base
 
         $html .= '</bod></html>';
 
-        return '<iframe srcdoc="' . htmlspecialchars($html) . '"></iframe>';
+        return '<iframecontainer><iframedimensions>RESIZE ME!</iframedimensions><iframe srcdoc="' . htmlspecialchars($html) . '"></iframe></iframecontainer>';
     }
 }
