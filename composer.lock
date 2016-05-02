@@ -13,16 +13,16 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "12e8bdf6a603e9584752c8f7503c434b078f6c2e"
+                "reference": "6ba83b9fcab4570cc854490f9b5d668c846db5fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-8fff0e.zip",
-                "reference": "12e8bdf6a603e9584752c8f7503c434b078f6c2e",
-                "shasum": "5e25ea0ca4eb5a032b085fb277565538a38b2900"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-a22e41.zip",
+                "reference": "6ba83b9fcab4570cc854490f9b5d668c846db5fd",
+                "shasum": "d42630f567991245631bb85f5bd3324a286a82ad"
             },
             "type": "library",
-            "time": "2016-04-29 11:29:29"
+            "time": "2016-05-02 14:42:46"
         },
         {
             "name": "symfony/finder",

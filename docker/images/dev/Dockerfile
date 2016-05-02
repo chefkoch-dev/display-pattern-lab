@@ -14,10 +14,4 @@ RUN \
     php -r "unlink('composer-setup.php');" && \
     chmod a+x /usr/bin/composer
 
-ADD entrypoint.sh /entrypoint.sh
-
-RUN chmod a+x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
-
 WORKDIR /app

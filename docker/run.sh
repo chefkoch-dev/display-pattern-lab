@@ -1,3 +1,9 @@
 #!/bin/bash
 
-docker run -ti --rm -p 8181:8181 -p 3001:3001 -v $(pwd):$(pwd) -w $(pwd) dr.chefkoch.net/display-pattern-lab-dev node_modules/.bin/gulp "$@"
+set -e
+
+trap "docker rm -f display-pattern-lab-dev" EXIT
+
+docker run -d --name display-pattern-lab-dev -p 8181:8181 -p 3001:3001 -v $(pwd):$(pwd) -w $(pwd) dr.chefkoch.net/display-pattern-lab-dev bash -c "while true; do sleep 1; done"
+docker exec -ti display-pattern-lab-dev bash -c "TERM=xterm node_modules/.bin/gulp"
+
