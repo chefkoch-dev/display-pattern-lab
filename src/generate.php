@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-//$config = json_decode($argv[1], true);
+$config = json_decode($argv[1], true);
 
 $loader = null;
 foreach ($config['twig']['namespaces'] as $namespace => $path) {
@@ -18,7 +18,7 @@ $cssFile = '/css/' . str_replace('.scss', '.css', $indexFileName);
 
 $factory = new \Chefkoch\DisplayPatternLab\Document\Factory($twig, $cssFile);
 
-$tree = $factory->start(realpath(__DIR__ . '/../vendor/chefkoch/display-patterns'));
+$tree = $factory->start($config['twig']['rootDirectory']);
 
 $output = '<html><head><link rel="stylesheet" type="text/css" href="/lab/lab.css" /></head><body>';
 $output .= $tree->render();
