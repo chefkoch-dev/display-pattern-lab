@@ -24,7 +24,6 @@ $factory = new \Chefkoch\DisplayPatternLab\Model\Factory();
 
 $tree = $factory->start($config['twig']['rootDirectory']);
 
-
 file_put_contents(
     __DIR__ . '/../output/index.html',
     $twig->render(

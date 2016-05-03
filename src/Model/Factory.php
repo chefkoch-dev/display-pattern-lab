@@ -25,28 +25,33 @@ class Factory
         $finder = new \Symfony\Component\Finder\Finder();
 
         switch (true) {
+            case ($file->getBasename() == 'node_modules'):
+                return new UnknownFile($file);
             case $file->isDir():
+
                 $directory = new Directory($file);
 
-                if ($file->getBasename() != 'node_modules') {
-                    $finder = $finder
-                        ->in(
-                            rtrim(
-                                preg_replace(
-                                    '(' . preg_quote($file->getRelativePathname()) . '$)',
-                                    '',
-                                    $file->getRealPath()
-                                ),
-                                '/'
-                            )
+                $finder = $finder
+                    ->in(
+                        rtrim(
+                            preg_replace(
+                                '(' . preg_quote($file->getRelativePathname()) . '$)',
+                                '',
+                                $file->getRealPath()
+                            ),
+                            '/'
                         )
-                        ->depth($directory->getDepth())
-                        ->path('(^' . preg_quote($file->getRelativePathname()) . ')');
+                    )
+                    ->depth($directory->getDepth())
+                    ->path('(^' . preg_quote($file->getRelativePathname()) . ')');
 
-                    foreach ($finder as $file) {
-                        $directory->addChild($this->createDocument($file));
-                    }
+                $children = array();
+                foreach ($finder as $file) {
+                    $children[] = $this->createDocument($file);
                 }
+
+                $directory->fill($children);
+
                 return $directory;
             case preg_match('(\.twig$)', $file->getBasename()):
                 return new TwigFile($file);

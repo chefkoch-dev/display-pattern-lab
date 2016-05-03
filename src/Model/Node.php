@@ -5,11 +5,31 @@ namespace Chefkoch\DisplayPatternLab\Model;
 abstract class Node
 {
 
+    /** @var string */
+    private $name;
+
     /** @var Node */
     private $parent;
 
     /** @var Node[] */
     private $nodes = array();
+
+    /**
+     * Node constructor.
+     * @param $name
+     */
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
      * @return string

@@ -1,7 +1,7 @@
 {% if document.children %}
     <ul class="ck-navigation">
         {% for child in document.children %}
-            {% if child.type in ['directory', 'twigfile'] %}
+            {% if child.type in ['directory', 'twigfile', 'pattern', 'variant'] %}
                 <li class="ck-navigation__item">
                     {% if child.type == 'twigfile' %}
                         <a href="#{{ child.id }}">

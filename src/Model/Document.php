@@ -15,6 +15,7 @@ abstract class Document extends Node {
      */
     public function __construct(SplFileInfo $file)
     {
+        parent::__construct($file->getFilename());
         $this->file = $file;
     }
 
@@ -37,9 +38,9 @@ abstract class Document extends Node {
     /**
      * @return string
      */
-    public function getName()
+    public function getFilenameWithoutExtension()
     {
-        return $this->file->getFilename();
+        return preg_replace('(.html.twig|.json|.md|.js|.scss|.yml|.yaml)', '', $this->file->getFilename());
     }
 
     /**
