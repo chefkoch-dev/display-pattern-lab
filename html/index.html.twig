@@ -1,13 +1,18 @@
 <html>
     <title>Chefkoch Display Pattern Lab</title>
     <head>
-        <link rel="stylesheet" type="text/css" href="/lab/lab.css" />
+        <link rel="stylesheet" type="text/css" href="./lab/lab.css" />
     </head>
     <body>
         <nav class="ck-nav-bar">
           {% include "@lab/_navigation.html.twig" with {document: tree} %}
+          <ul  class="ck-labsizer">
+            <li class="ck-labsizer__item"><button onclick="sizer('300px')">S</button></li>
+            <li class="ck-labsizer__item"><button onclick="sizer('768px')">M</button></li>
+            <li class="ck-labsizer__item"><button onclick="sizer('1200px')">L</button></li>
+          </ul>
         </nav>
         {% include "@lab/documents/directory.html.twig" with {document: tree} %}
-        <script src="/lab/lab.js"></script>
+        <script src="./lab/lab.js"></script>
     </body>
 </html>
