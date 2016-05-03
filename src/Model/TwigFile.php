@@ -1,10 +1,8 @@
 <?php
 
-namespace Chefkoch\DisplayPatternLab\Document;
+namespace Chefkoch\DisplayPatternLab\Model;
 
-use Symfony\Component\Finder\SplFileInfo;
-
-class TwigFile extends Base
+class TwigFile extends Document
 {
 
     /**

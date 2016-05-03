@@ -87,7 +87,7 @@ gulp.task('sass', function() {
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
-        .pipe(shell(['php src/generate.php \'' + JSON.stringify(config) + '\'']))
+        .pipe(shell(['php -d xdebug.remote_enable=On -d xdebug.remote_host=172.123.123.1 src/generate.php \'' + JSON.stringify(config) + '\'']))
 });
 
 

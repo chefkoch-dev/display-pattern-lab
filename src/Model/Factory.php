@@ -1,6 +1,6 @@
 <?php
 
-namespace Chefkoch\DisplayPatternLab\Document;
+namespace Chefkoch\DisplayPatternLab\Model;
 
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -9,7 +9,7 @@ class Factory
 
     /**
      * @param $path
-     * @return Base
+     * @return Node
      */
     public function start($path)
     {
@@ -18,7 +18,7 @@ class Factory
 
     /**
      * @param SplFileInfo $file
-     * @return Base
+     * @return Node
      */
     public function createDocument(SplFileInfo $file)
     {
@@ -44,7 +44,7 @@ class Factory
                         ->path('(^' . preg_quote($file->getRelativePathname()) . ')');
 
                     foreach ($finder as $file) {
-                        $directory->addChildDocument($this->createDocument($file));
+                        $directory->addChild($this->createDocument($file));
                     }
                 }
                 return $directory;

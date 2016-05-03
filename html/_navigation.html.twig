@@ -1,6 +1,6 @@
-{% if document.childDocuments %}
+{% if document.children %}
     <ul class="ck-navigation">
-        {% for child in document.childDocuments %}
+        {% for child in document.children %}
             {% if child.type in ['directory', 'twigfile'] %}
                 <li class="ck-navigation__item">
                     {% if child.type == 'twigfile' %}

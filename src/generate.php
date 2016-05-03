@@ -20,9 +20,10 @@ $cssFile = './css/' . str_replace('.scss', '.css', $indexFileName);
 
 $twig->addGlobal('displayPatternsCss', $cssFile);
 
-$factory = new \Chefkoch\DisplayPatternLab\Document\Factory();
+$factory = new \Chefkoch\DisplayPatternLab\Model\Factory();
 
 $tree = $factory->start($config['twig']['rootDirectory']);
+
 
 file_put_contents(
     __DIR__ . '/../output/index.html',
