@@ -2,10 +2,12 @@
     <title>Chefkoch Display Pattern Lab</title>
     <head>
         <link rel="stylesheet" type="text/css" href="/lab/lab.css" />
-        <script src="/lab/lab.js"></script>
     </head>
     <body>
-        {% include "@lab/_navigation.html.twig" with {document: tree} %}
+        <nav class="ck-nav-bar">
+          {% include "@lab/_navigation.html.twig" with {document: tree} %}
+        </nav>
         {% include "@lab/documents/directory.html.twig" with {document: tree} %}
+        <script src="/lab/lab.js"></script>
     </body>
 </html>
