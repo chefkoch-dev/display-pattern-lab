@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+pushd "$(dirname $0)" > /dev/null
+
+./build-and-push-dev-image
+./install
+
+cp -R ../output images/prod/
+docker build -t dr.chefkoch.net/display-pattern-lab images/prod
+rm -rf images/prod/output
+docker push dr.chefkoch.net/display-pattern-lab

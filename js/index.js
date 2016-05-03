@@ -1,27 +1,30 @@
-var interact = require('interact.js')
+window.onload = adjustIframeHeight
+window.sizer = adjustIframeWidth
 
-interact('iframeContainer')
-  .resizable({
-    preserveAspectRatio: false,
-    edges: { left: true, right: true }
+var $ = document.querySelectorAll
+
+function displayIframe(iFrame){
+  iframe.style
+}
+
+
+function adjustIframeWidth(size){
+  var iFrames = $('iframe')
+
+  ;[].map.call(iFrames, (frame)=>{
+    debugger
+    frame.style.width = size
+    return
   })
-  .on('resizemove', function (event) {
-    var target = event.target,
-        x = (parseFloat(target.getAttribute('data-x')) || 0),
-        y = (parseFloat(target.getAttribute('data-y')) || 0);
+}
 
-    // update the element's style
-    target.style.width  = event.rect.width + 'px';
-    target.style.height = event.rect.height + 'px';
+function adjustIframeHeight(){
+  var iFrames = $('iframe')
 
-    // translate when resizing from top or left edges
-    x += event.deltaRect.left;
-    y += event.deltaRect.top;
+  ;[].map.call(iFrames, (frame)=>{
+    var realHeight = frame.contentWindow.document.body.offsetHeight
+    frame.style.height = realHeight+"px"
+    return
+  })
 
-    target.style.webkitTransform = target.style.transform =
-        'translate(' + x + 'px,' + y + 'px)';
-
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-    target.children[0].textContent = Math.round(event.rect.width) + '×' + Math.round(event.rect.height);
-  });
+}

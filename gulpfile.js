@@ -14,7 +14,7 @@ var batch = require('gulp-batch');
 gulp.task('default', ['serve']);
 
 
-gulp.task('serve', ['twig', 'sass', 'js', 'lab-sass', 'watch'], function() {
+gulp.task('serve', ['twig', 'sass', 'lab-js', 'lab-sass', 'watch'], function() {
 
     browserSync.init({
         server: {
@@ -28,6 +28,7 @@ gulp.task('serve', ['twig', 'sass', 'js', 'lab-sass', 'watch'], function() {
     
 });
 
+gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-sass']);
 
 gulp.task('watch', function(){
     
@@ -59,7 +60,7 @@ gulp.task('watch', function(){
     }));
     
     
-    gulp.watch(config.js.rootDirectory + "/**/*.js", function() { gulp.start('js');browserSync.reload(); });
+    gulp.watch(config.js.rootDirectory + "/**/*.js", function() { gulp.start('lab-js');browserSync.reload(); });
 
 })
 
@@ -90,7 +91,7 @@ gulp.task('twig', function() {
 });
 
 
-gulp.task('js', function() {
+gulp.task('lab-js', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
         .pipe(shell('node_modules/.bin/browserify js/index.js -o output/lab/lab.js'))
