@@ -2,26 +2,37 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-$config = json_decode($argv[1], true);
+(function() use ($argv) {
 
-$loader = null;
-foreach ($config['twig']['namespaces'] as $namespace => $path) {
-    if (!$loader) {
-        $loader = new Twig_Loader_Filesystem($path);
+    $config = json_decode($argv[1], true);
+
+    $labTwigTemplatePath = realpath(__DIR__ . '/../html');
+    $loader = new Twig_Loader_Filesystem($labTwigTemplatePath);
+    $loader->addPath($labTwigTemplatePath, 'lab');
+    foreach ($config['twig']['namespaces'] as $namespace => $path) {
+        $loader->addPath($path, $namespace);
     }
-    $loader->addPath($path, $namespace);
-}
-$twig = new Twig_Environment($loader);
+    $twig = new Twig_Environment($loader);
 
-$indexFileName = basename($config['scss']['indexFile']);
-$cssFile = '/css/' . str_replace('.scss', '.css', $indexFileName);
+    $twigExtension = new \Chefkoch\DisplayPatternLab\Twig\Extension();
+    $twig->addExtension($twigExtension);
 
-$factory = new \Chefkoch\DisplayPatternLab\Document\Factory($twig, $cssFile);
+    $indexFileName = basename($config['scss']['indexFile']);
+    $cssFile = '/css/' . str_replace('.scss', '.css', $indexFileName);
 
-$tree = $factory->start($config['twig']['rootDirectory']);
+    $twig->addGlobal('displayPatternsCss', $cssFile);
 
-$output = '<html><head><link rel="stylesheet" type="text/css" href="/lab/lab.css" /><script src="/lab/lab.js"></script></head><body>';
-$output .= $tree->render();
-$output .= '</body>';
+    $factory = new \Chefkoch\DisplayPatternLab\Document\Factory();
 
-file_put_contents(__DIR__ . '/../output/index.html', $output);
+    $tree = $factory->start($config['twig']['rootDirectory']);
+
+    file_put_contents(
+        __DIR__ . '/../output/index.html',
+        $twig->render(
+            '@lab/index.html.twig',
+            array(
+                'tree' => $tree
+            )
+        )
+    );
+})();

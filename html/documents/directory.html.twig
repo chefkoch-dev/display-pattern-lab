@@ -1,0 +1,7 @@
+{% if not document.isRoot %}<h{{ document.depth }}>{{ document.title }}</h{{ document.depth }}>{% endif %}
+
+{% for child in document.childDocuments %}
+
+    {% include "@lab/documents/" ~ child.type ~ ".html.twig" with {document: child} %}
+
+{% endfor %}
