@@ -2,7 +2,11 @@ html, body {
   margin: 0;
 }
 
-h1 {
+body {
+    margin-top: 100px;
+}
+
+h1,h2,h3 {
   text-align: center;
   background: lightgray;
   box-shadow: 0px 2px 2px 0px gray;
@@ -10,17 +14,11 @@ h1 {
 
 iframe {
   overflow: hidden;
-  display: block;
+  display: none;
   width: inherit;
   margin: 0 auto;
   border: none;
-}
-
-iframecontainer {
-  margin-bottom: 3em;
-  display: block;
-  width: 90vw;
-  margin: 0 auto;
+  transition: 1s width linear;
 }
 
 
@@ -35,10 +33,6 @@ iframecontainer {
   background: green;
 }
 
-.ck-navigation {
-  list-style: none;
-} 
-
 .ck-navigation__item {
   display: inline-flex;
 }
@@ -47,14 +41,8 @@ iframecontainer {
     font-weight:bold;
     margin-bottom:10px;
     float:left; /* Clear floats */
-    width:100%;
-    /* Bring the nav above everything else--uncomment if needed.
-    position:relative;
-    z-index:5;
-    */
 }
 .ck-navigation__item{
-    float:left;
     margin-right:10px;
     position:relative;
 }
@@ -98,4 +86,9 @@ iframecontainer {
 }
 .ck-navigation__item:hover ul li a:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
     background:#333;
+}
+.ck-labsizer {
+  float: right;
+  list-style: none;
+  display: inline-flex;
 }

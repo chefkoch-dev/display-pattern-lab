@@ -1,4 +1,4 @@
-{% if not document.isRoot %}<h{{ document.depth }}>{{ document.title }}</h{{ document.depth }}>{% endif %}
+{% if not document.isRoot %}<h{{ document.depth }} id="{{document.title}}">{{ document.title }}</h{{ document.depth }}>{% endif %}
 
 {% for child in document.childDocuments %}
 
