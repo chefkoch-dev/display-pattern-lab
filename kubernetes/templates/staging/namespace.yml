@@ -1,0 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ${K8S_NAMESPACE}
+  labels:
+    project: ${K8S_PROJECT}
+    name: ${K8S_NAMESPACE}
+    longRunning: 'true'
