@@ -2,6 +2,8 @@ Vagrant.configure("2") do |config|
   # always use Vagrants insecure key
   config.ssh.insert_key = false
 
+  config.ssh.forward_agent = true
+
   config.vm.box = "coreos-stable"
   config.vm.box_version = "899.15.0"
   config.vm.box_url = "https://storage.googleapis.com/stable.release.core-os.net/amd64-usr/899.15.0/coreos_production_vagrant.json"
