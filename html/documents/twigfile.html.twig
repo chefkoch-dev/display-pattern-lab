@@ -1,0 +1,17 @@
+{% set patternHtml %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ displayPatternsCss }}" />
+    </head>
+    <body>
+        {% include "@display-patterns/" ~ document.file.relativePathname with document.data %}
+    </body>
+</html>
+{% endset %}
+
+<h{{ document.depth }}>{{ document.title }}</h{{ document.depth }}>
+{% if (document.data | length) > 0 %}
+    <p>Dies sind die Beispieldaten:</p>
+    <pre>{{ yamlize(document.data) }}</pre>
+{% endif %}
+<iframecontainer><iframedimensions>RESIZE ME!</iframedimensions><iframe srcdoc="{{ patternHtml|e }}"></iframe></iframecontainer>

@@ -33,6 +33,44 @@ abstract class Base {
     }
 
     /**
+     * @return int
+     */
+    public function getDepth()
+    {
+        $path = trim($this->getFile()->getRelativePathname(), '/');
+        if ($path === '') {
+            return 0;
+        } else {
+            return count(explode('/', $path));
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->getFile()->getRelativePathname();
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        $reflection = new \ReflectionClass($this);
+        return $reflection->getShortName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getContents()
+    {
+        return $this->file->getContents();
+    }
+
+    /**
      * @param Base $document
      */
     public function addChildDocument(Base $document)
@@ -72,9 +110,4 @@ abstract class Base {
     {
         return $this->file;
     }
-
-    /**
-     * @return string
-     */
-    abstract function render();
 }

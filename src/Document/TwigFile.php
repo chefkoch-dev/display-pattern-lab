@@ -7,30 +7,11 @@ use Symfony\Component\Finder\SplFileInfo;
 class TwigFile extends Base
 {
 
-    /** @var \Twig_Environment */
-    private $twig;
-
-    /** @var string */
-    private $cssFile;
-
     /**
-     * @param SplFileInfo $file
-     * @param \Twig_Environment $twig
+     * @return array
      */
-    public function __construct(SplFileInfo $file, \Twig_Environment $twig, $cssFile)
+    public function getData()
     {
-        parent::__construct($file);
-        $this->twig = $twig;
-        $this->cssFile = $cssFile;
-    }
-
-    /**
-     *
-     */
-    public function render()
-    {
-        $html = '<html><head><link rel="stylesheet" type="text/css" href="' . $this->cssFile . '" /></head><body>';
-
         $data = array();
 
         $dataFileYaml = str_replace('.html.twig', '.yml', $this->getFile()->getRealPath());
@@ -42,16 +23,6 @@ class TwigFile extends Base
             $data = array_merge($data, json_decode(file_get_contents($dataFileJson), true));
         }
 
-        try {
-
-            $html .= $this->twig->render($this->getFile()->getRelativePathname(), $data);
-
-        } catch (\Exception $e) {
-            $html = 'Pattern could not be rendered: ' . $e->getMessage();
-        }
-
-        $html .= '</bod></html>';
-
-        return '<iframecontainer><iframedimensions>RESIZE ME!</iframedimensions><iframe srcdoc="' . htmlspecialchars($html) . '"></iframe></iframecontainer>';
+        return $data;
     }
 }

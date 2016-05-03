@@ -7,21 +7,6 @@ use Symfony\Component\Finder\SplFileInfo;
 class Factory
 {
 
-    /** @var \Twig_Environment */
-    private $twig;
-
-    /** @var string */
-    private $cssFile;
-
-    /**
-     * @param \Twig_Environment $twig
-     */
-    public function __construct(\Twig_Environment $twig, $cssFile)
-    {
-        $this->twig = $twig;
-        $this->cssFile = $cssFile;
-    }
-
     /**
      * @param $path
      * @return Base
@@ -64,7 +49,7 @@ class Factory
                 }
                 return $directory;
             case preg_match('(\.twig$)', $file->getBasename()):
-                return new TwigFile($file, $this->twig, $this->cssFile);
+                return new TwigFile($file);
             case preg_match('(\.md$)', $file->getBasename()):
                 return new MarkdownFile($file);
             default:

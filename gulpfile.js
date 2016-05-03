@@ -33,14 +33,15 @@ gulp.task('watch', function(){
     
     gulp.watch([
       'src/**/*.php',
+      'html/**/*.twig',
       config.twig.rootDirectory + "/**/*.twig",
       config.twig.rootDirectory + "/**/*.yml",
       config.twig.rootDirectory + "/**/*.md"
     ], 
     batch(function (events, done) {
       gulp.start('twig', done)
+      browserSync.reload();
     }))
-    
 
     gulp.watch(config.scss.rootDirectory + "/**/*.scss", function() { gulp.start('sass'); });
     
