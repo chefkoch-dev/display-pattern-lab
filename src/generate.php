@@ -16,7 +16,7 @@ $twigExtension = new \Chefkoch\DisplayPatternLab\Twig\Extension();
 $twig->addExtension($twigExtension);
 
 $indexFileName = basename($config['scss']['indexFile']);
-$cssFile = '/css/' . str_replace('.scss', '.css', $indexFileName);
+$cssFile = './css/' . str_replace('.scss', '.css', $indexFileName);
 
 $twig->addGlobal('displayPatternsCss', $cssFile);
 
