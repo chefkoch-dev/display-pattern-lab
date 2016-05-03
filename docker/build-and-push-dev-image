@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+pushd "$(dirname $0)" > /dev/null
+
+docker build -t dr.chefkoch.net/display-pattern-lab-dev images/dev
+docker push dr.chefkoch.net/display-pattern-lab-dev

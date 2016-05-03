@@ -21,7 +21,7 @@ Alternatively you can just use a local docker deamon, e.g. when working with a l
 Then start the lab as follows:
 
     ./docker/install // only necessary after first checkout or changes to depencencies
-    ./docker/run
+    ./docker/start
 
 ### No Docker  
 If you do not like docker for any reason and love to pollute your host machine with dependencies make sure you have installed:

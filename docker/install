@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+pushd "$(dirname $0)" > /dev/null
+
+./run dr.chefkoch.net/display-pattern-lab-dev npm install
+./run dr.chefkoch.net/display-pattern-lab-dev composer install
+./run dr.chefkoch.net/display-pattern-lab-dev bash -c "cd vendor/chefkoch/display-patterns && npm install"
+./run dr.chefkoch.net/display-pattern-lab-dev node_modules/.bin/gulp build
