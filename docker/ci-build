@@ -12,6 +12,6 @@ K8S_PROJECT=${K8S_PROJECT:-"display-pattern-lab"}
 
 cp -R ../output images/prod/
 docker build -t dr.chefkoch.net/$K8S_PROJECT images/prod
-docker tag -f $K8S_PROJECT:latest K8S_PROJECT:$IMAGE_TAG
+docker tag -f $K8S_PROJECT:latest $K8S_PROJECT:$IMAGE_TAG
 rm -rf images/prod/output
 docker push dr.chefkoch.net/$K8S_PROJECT
