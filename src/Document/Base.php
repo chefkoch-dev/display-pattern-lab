@@ -37,7 +37,7 @@ abstract class Base {
      */
     public function getDepth()
     {
-        $path = trim($this->getFile()->getRelativePathname(), '/');
+        $path = trim($this->file->getRelativePathname(), '/');
         if ($path === '') {
             return 0;
         } else {
@@ -48,9 +48,25 @@ abstract class Base {
     /**
      * @return string
      */
+    public function getId()
+    {
+        return str_replace('/', '-', $this->file->getRelativePathname());
+    }
+
+    /**
+     * @return string
+     */
     public function getTitle()
     {
-        return $this->getFile()->getRelativePathname();
+        return $this->file->getRelativePathname();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->file->getFilename();
     }
 
     /**
@@ -59,7 +75,7 @@ abstract class Base {
     public function getType()
     {
         $reflection = new \ReflectionClass($this);
-        return $reflection->getShortName();
+        return strtolower($reflection->getShortName());
     }
 
     /**

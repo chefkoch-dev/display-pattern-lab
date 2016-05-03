@@ -9,7 +9,7 @@
 </html>
 {% endset %}
 
-<h{{ document.depth }}>{{ document.title }}</h{{ document.depth }}>
+<h{{ document.depth }} id="{{ document.id }}">{{ document.title }}</h{{ document.depth }}>
 {% if (document.data | length) > 0 %}
     <p>Dies sind die Beispieldaten:</p>
     <pre>{{ yamlize(document.data) }}</pre>

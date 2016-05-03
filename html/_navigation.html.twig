@@ -1,0 +1,18 @@
+{% if document.childDocuments %}
+    <ul>
+        {% for child in document.childDocuments %}
+            {% if child.type in ['directory', 'twigfile'] %}
+                <li>
+                    {% if child.type == 'twigfile' %}
+                        <a href="#{{ child.id }}">
+                            {{ child.name }}
+                        </a>
+                    {% else %}
+                        {{ child.name }}
+                    {% endif %}
+                    {% include "@lab/_navigation.html.twig" with {document: child} %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

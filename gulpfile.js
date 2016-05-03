@@ -39,8 +39,10 @@ gulp.task('watch', function(){
       config.twig.rootDirectory + "/**/*.md"
     ], 
     batch(function (events, done) {
-      gulp.start('twig', done)
-      browserSync.reload();
+      gulp.start('twig', function () {
+          browserSync.reload();
+          done();
+      })
     }))
 
     gulp.watch(config.scss.rootDirectory + "/**/*.scss", function() { gulp.start('sass'); });
