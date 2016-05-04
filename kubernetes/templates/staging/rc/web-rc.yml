@@ -1,0 +1,22 @@
+# Display Pattern Lab ReplicationController
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: web-rc-${IMAGE_TAG,,}
+  labels:
+    project: ${K8S_PROJECT}
+    name: web-rc
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        project: ${K8S_PROJECT}
+        name: web-pod
+        release: ${IMAGE_TAG}
+    spec:
+      containers:
+      - image: "dr.chefkoch.net/display-pattern-lab:${IMAGE_TAG}"
+        name: web-pod
+        ports:
+        - containerPort: 80

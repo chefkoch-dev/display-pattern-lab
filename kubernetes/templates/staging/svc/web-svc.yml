@@ -1,0 +1,20 @@
+#  Display Pattern Lab - Service
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-svc
+  labels:
+    project: ${K8S_PROJECT}
+    name: web-svc
+  annotations:
+    kubernetesReverseproxy: >
+      {\"hosts\":
+        [
+          {\"host\": \"${K8S_HOSTNAME}\", \"port\": 80}
+        ]
+      }
+spec:
+  ports:
+    - {name: http, port: 80}
+  selector:
+    name: web-pod
