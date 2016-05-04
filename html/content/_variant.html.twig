@@ -12,17 +12,25 @@
     <p>So sieht das Pattern gerendert aus:</p>
 
     {% set patternHtml %}
+        {% include "@display-patterns/" ~ variant.twigfile.file.relativePathname with variant.data %}
+    {% endset %}
+    {% set iframeContent %}
         <html>
         <head>
             <link rel="stylesheet" type="text/css" href="{{ displayPatternsCss }}" />
         </head>
             <body>
-                {% include "@display-patterns/" ~ variant.twigfile.file.relativePathname with variant.data %}
+                {{ patternHtml|raw }}
             </body>
         </html>
     {% endset %}
 
-    <iframecontainer><iframe scrolling="no" seamless="seamless" srcdoc="{{ patternHtml|e }}"></iframe></iframecontainer>
+    <iframecontainer><iframe scrolling="no" seamless="seamless" srcdoc="{{ iframeContent|e }}"></iframe></iframecontainer>
+
+    <p>Hier das gerenderte HTML:</p>
+    <pre>
+        {{ patternHtml|e }}
+    </pre>
 
     <p>Hier der Quelltext des Templates:</p>
     <pre>
