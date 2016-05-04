@@ -6,12 +6,22 @@ pushd "$(dirname $0)" > /dev/null
 
 IMAGE_TAG=${IMAGE_TAG:-"latest"}
 K8S_PROJECT=${K8S_PROJECT:-"display-pattern-lab"}
+BRANCH_NAME=${BRANCH_NAME:-"master"}
 
 ./build-and-push-dev-image
 ./install
 
 cp -R ../output images/prod/
 docker build -t dr.chefkoch.net/$K8S_PROJECT images/prod
+
+if [ "${IMAGE_TAG}" != "latest" ]
 docker tag -f $K8S_PROJECT:latest $K8S_PROJECT:$IMAGE_TAG
+fi
+
 rm -rf images/prod/output
-docker push dr.chefkoch.net/$K8S_PROJECT
+
+if [ "${BRANCH_NAME}" == "master" ]
+    docker push dr.chefkoch.net/$K8S_PROJECT:latest
+fi
+
+docker push dr.chefkoch.net/$K8S_PROJECT:$IMAGE_TAG
