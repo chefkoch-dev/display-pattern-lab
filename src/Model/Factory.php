@@ -9,27 +9,28 @@ class Factory
 
     /**
      * @param $path
-     * @return Node
+     * @return Directory
      */
     public function start($path)
     {
-        return $this->createDocument(new SplFileInfo($path, '', ''));
+        return $this->createFilesystemNode(new SplFileInfo($path, '', ''));
     }
 
     /**
      * @param SplFileInfo $file
-     * @return Node
+     * @return AbstractFilesystemNode
      */
-    public function createDocument(SplFileInfo $file)
+    private function createFilesystemNode(SplFileInfo $file)
     {
         $finder = new \Symfony\Component\Finder\Finder();
 
+
         switch (true) {
             case ($file->getBasename() == 'node_modules'):
-                return new UnknownFile($file);
+                return null;
             case $file->isDir():
 
-                $directory = new Directory($file);
+                $depth = empty($file->getRelativePathname()) ? 0 : count(explode('/', $file->getRelativePathname()));
 
                 $finder = $finder
                     ->in(
@@ -42,15 +43,16 @@ class Factory
                             '/'
                         )
                     )
-                    ->depth($directory->getDepth())
+                    ->depth($depth)
                     ->path('(^' . preg_quote($file->getRelativePathname()) . ')');
 
-                $children = array();
-                foreach ($finder as $file) {
-                    $children[] = $this->createDocument($file);
-                }
+                $directory = new Directory($file);
 
-                $directory->fill($children);
+                foreach ($finder as $file) {
+                    if ($filesystemNode = $this->createFilesystemNode($file)) {
+                        $directory->addContent($filesystemNode);
+                    }
+                }
 
                 return $directory;
             case preg_match('(\.twig$)', $file->getBasename()):
@@ -58,7 +60,7 @@ class Factory
             case preg_match('(\.md$)', $file->getBasename()):
                 return new MarkdownFile($file);
             default:
-                return new UnknownFile($file);
+                return null;
         }
     }
 }

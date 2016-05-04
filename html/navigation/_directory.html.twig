@@ -1,0 +1,15 @@
+{% if not directory.isRootDirectory %}
+    {{ directory.name }}
+{% endif %}
+<ul class="ck-navigation">
+    {% for directory in directory.subDirectories %}
+        <li class="ck-navigation__item">
+            {% include "@lab/navigation/_directory.html.twig" %}
+        </li>
+    {% endfor %}
+    {% for pattern in directory.patterns %}
+        <li class="ck-navigation__item">
+            {% include "@lab/navigation/_pattern.html.twig" %}
+        </li>
+    {% endfor %}
+</ul>

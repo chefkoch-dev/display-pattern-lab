@@ -2,24 +2,49 @@
 
 namespace Chefkoch\DisplayPatternLab\Model;
 
-class Pattern extends Node
+class Pattern extends AbstractNode
 {
 
+    /** @var Directory */
+    private $directory;
+
+    /** @var Variant[] */
+    private $variants = array();
+
     /**
-     * @param Document[] $documents
+     * @param Directory $directory
+     * @param $name
      */
-    public function fill(array $documents)
+    public function __construct(Directory $directory, $name)
     {
-        $variants = array();
-        foreach ($documents as $document) {
-            $variantName = preg_replace('(^' . preg_quote($this->getName() . '--') . ')', '', $document->getFilenameWithoutExtension());
-            $variants[$variantName][] = $document;
+        parent::__construct($name);
+        $this->directory = $directory;
+    }
+
+    public function getId()
+    {
+        return $this->directory->getId() . '-' . $this->getName();
+    }
+
+    /**
+     * @return Variant[]
+     */
+    public function getVariants()
+    {
+        return $this->variants;
+    }
+
+    /**
+     * @param File[] $file
+     */
+    public function addFile(File $file)
+    {
+        $variantName = preg_replace('(^' . preg_quote($this->getName() . '--') . ')', '', $file->getFilenameWithoutExtension());
+
+        if (!($variant = @$this->variants[$variantName])) {
+            $this->variants[$variantName] = $variant = new Variant($this, $variantName);
         }
 
-        foreach ($variants as $variantName => $childDocuments) {
-            $variant = new Variant($variantName);
-            $variant->fill($childDocuments);
-            $this->addChild($variant);
-        }
+        $variant->addFile($file);
     }
 }

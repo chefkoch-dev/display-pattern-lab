@@ -4,7 +4,7 @@ namespace Chefkoch\DisplayPatternLab\Model;
 
 use Symfony\Component\Finder\SplFileInfo;
 
-abstract class Document extends Node {
+abstract class AbstractFilesystemNode extends AbstractNode {
 
     /** @var SplFileInfo */
     private $file;
@@ -17,14 +17,6 @@ abstract class Document extends Node {
     {
         parent::__construct($file->getFilename());
         $this->file = $file;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return str_replace('/', '-', $this->file->getRelativePathname());
     }
 
     /**

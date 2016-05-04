@@ -1,0 +1,9 @@
+<div style="border: 1px solid blue">
+
+{% if variant.twigfile %}
+
+    {% include "@lab/content/_twigfile.html.twig" with {twigfile: variant.twigfile} %}
+
+{% endif %}
+
+</div>

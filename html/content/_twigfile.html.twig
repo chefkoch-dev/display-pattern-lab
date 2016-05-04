@@ -4,14 +4,14 @@
         <link rel="stylesheet" type="text/css" href="{{ displayPatternsCss }}" />
     </head>
     <body>
-        {% include "@display-patterns/" ~ document.file.relativePathname with document.data %}
+        {% include "@display-patterns/" ~ twigfile.file.relativePathname with twigfile.data %}
     </body>
 </html>
 {% endset %}
 
-<h{{ document.depth }} id="{{ document.id }}" class="lab-pattern">{{ document.title }}</h{{ document.depth }}>
-{% if (document.data | length) > 0 %}
+<h{{ twigfile.depth }} id="{{ node.id }}" class="lab-pattern">{{ node.title }}</h{{ twigfile.depth }}>
+{% if (twigfile.data | length) > 0 %}
     <p>Dies sind die Beispieldaten:</p>
-    <pre>{{ yamlize(document.data) }}</pre>
+    <pre>{{ yamlize(twigfile.data) }}</pre>
 {% endif %}
 <iframecontainer><iframe scrolling="no" seamless="seamless" srcdoc="{{ patternHtml|e }}"></iframe></iframecontainer>

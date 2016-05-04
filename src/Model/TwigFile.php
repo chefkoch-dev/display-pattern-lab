@@ -2,7 +2,7 @@
 
 namespace Chefkoch\DisplayPatternLab\Model;
 
-class TwigFile extends Document
+class TwigFile extends File
 {
 
     /**

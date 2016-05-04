@@ -1,0 +1,9 @@
+<div id="{{ pattern.id }}" style="border: 1px solid red">
+
+{% for variant in pattern.variants %}
+
+    {% include "@lab/content/_variant.html.twig" %}
+
+{% endfor %}
+
+</div>

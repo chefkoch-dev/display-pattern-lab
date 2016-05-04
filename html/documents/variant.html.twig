@@ -1,9 +1,0 @@
-<div style="border: 1px solid blue">
-
-{% for child in document.children %}
-
-    {% include "@lab/documents/" ~ child.type ~ ".html.twig" with {document: child} %}
-
-{% endfor %}
-
-</div>

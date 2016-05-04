@@ -2,6 +2,6 @@
 
 namespace Chefkoch\DisplayPatternLab\Model;
 
-class MarkdownFile extends Document
+class MarkdownFile extends File
 {
 }
