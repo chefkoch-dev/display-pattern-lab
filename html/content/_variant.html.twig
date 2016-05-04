@@ -1,9 +1,38 @@
-<div style="border: 1px solid blue">
 
-{% if variant.twigfile %}
-
-    {% include "@lab/content/_twigfile.html.twig" with {twigfile: variant.twigfile} %}
-
+{% if variant.documentation %}
+    {{ variant.documentation.html | raw }}
 {% endif %}
 
-</div>
+{% if variant.data %}
+    <p>Dies sind die Beispieldaten:</p>
+    <pre>{{ variant.dataAsString }}</pre>
+{% endif %}
+
+{% if variant.twigfile %}
+    <p>So sieht das Pattern gerendert aus:</p>
+
+    {% set patternHtml %}
+        <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{{ displayPatternsCss }}" />
+        </head>
+            <body>
+                {% include "@display-patterns/" ~ variant.twigfile.file.relativePathname with variant.data %}
+            </body>
+        </html>
+    {% endset %}
+
+    <iframecontainer><iframe scrolling="no" seamless="seamless" srcdoc="{{ patternHtml|e }}"></iframe></iframecontainer>
+
+    <p>Hier der Quelltext des Templates:</p>
+    <pre>
+        {{ variant.twigfile.contents }}
+    </pre>
+{% endif %}
+
+{% if variant.scssfile %}
+    <p>Diese Variante hat eine eigene Scss-Datei:</p>
+    <pre>
+        {{ variant.scssfile.contents }}
+    </pre>
+{% endif %}

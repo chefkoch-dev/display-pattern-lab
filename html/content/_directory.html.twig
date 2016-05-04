@@ -1,13 +1,13 @@
 {% if not directory.isRootDirectory %}<h{{ directory.depth }} id="{{directory.id}}">{{ directory.title }}</h{{ directory.depth }}>{% endif %}
 
 {% if directory.documentation %}
-    {% include "@lab/content/_markdownfile.html.twig" with {file: directory.documentation} %}
+    {{ directory.documentation.html | raw }}
 {% endif %}
-
-{% for directory in directory.subDirectories %}
-    {% include "@lab/content/_directory.html.twig" %}
-{% endfor %}
 
 {% for pattern in directory.patterns %}
     {% include "@lab/content/_pattern.html.twig" %}
+{% endfor %}
+
+{% for directory in directory.subDirectories %}
+    {% include "@lab/content/_directory.html.twig" %}
 {% endfor %}

@@ -57,8 +57,14 @@ class Factory
                 return $directory;
             case preg_match('(\.twig$)', $file->getBasename()):
                 return new TwigFile($file);
+            case preg_match('(\.json$)', $file->getBasename()):
+                return new JsonFile($file);
+            case preg_match('(\.(yml|yaml)$)', $file->getBasename()):
+                return new YamlFile($file);
             case preg_match('(\.md$)', $file->getBasename()):
                 return new MarkdownFile($file);
+            case preg_match('(\.scss$)', $file->getBasename()):
+                return new ScssFile($file);
             default:
                 return null;
         }

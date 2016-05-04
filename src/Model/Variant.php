@@ -2,6 +2,8 @@
 
 namespace Chefkoch\DisplayPatternLab\Model;
 
+use Symfony\Component\Yaml\Yaml;
+
 class Variant extends AbstractNode
 {
 
@@ -10,6 +12,15 @@ class Variant extends AbstractNode
 
     /** @var TwigFile */
     private $twigfile;
+
+    /** @var ScssFile */
+    private $scssFile;
+
+    /** @var MarkdownFile */
+    private $documentation;
+
+    /** @var DataFile[] */
+    private $dataFiles = array();
 
     /**
      * @param Pattern $pattern
@@ -38,7 +49,43 @@ class Variant extends AbstractNode
 
         if ($file instanceof TwigFile) {
             $this->twigfile = $file;
+        } elseif ($file instanceof DataFile) {
+            $this->dataFiles[] = $file;
+        } elseif ($file instanceof ScssFile) {
+            $this->scssFile = $file;
+        } elseif ($file instanceof MarkdownFile) {
+            $this->documentation = $file;
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMainVariant()
+    {
+        return $this->getName() == '';
+    }
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        if (!$this->isMainVariant() && ($mainVariant = $this->pattern->getMainVariant())) {
+            $data = $mainVariant->getData();
+        } else {
+            $data = array();
+        }
+        foreach ($this->dataFiles as $file) {
+            $data = array_merge($data, $file->getData());
+        }
+
+        return $data;
+    }
+
+    public function getDataAsString()
+    {
+        return Yaml::dump($this->getData(), 100);
     }
 
     /**
@@ -47,5 +94,21 @@ class Variant extends AbstractNode
     public function getTwigfile()
     {
         return $this->twigfile;
+    }
+
+    /**
+     * @return ScssFile
+     */
+    public function getScssFile()
+    {
+        return $this->scssFile;
+    }
+
+    /**
+     * @return MarkdownFile
+     */
+    public function getDocumentation()
+    {
+        return $this->documentation;
     }
 }

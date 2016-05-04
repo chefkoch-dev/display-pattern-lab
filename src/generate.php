@@ -12,9 +12,6 @@ foreach ($config['twig']['namespaces'] as $namespace => $path) {
 }
 $twig = new Twig_Environment($loader);
 
-$twigExtension = new \Chefkoch\DisplayPatternLab\Twig\Extension();
-$twig->addExtension($twigExtension);
-
 $indexFileName = basename($config['scss']['indexFile']);
 $cssFile = './css/' . str_replace('.scss', '.css', $indexFileName);
 

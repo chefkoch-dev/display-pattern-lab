@@ -94,9 +94,7 @@ class Directory extends AbstractFilesystemNode
                 return;
             }
 
-            $fileNameWithoutExtension = $content->getFilenameWithoutExtension();
-            $fileNameParts = explode('--', $fileNameWithoutExtension);
-            $patternName = $fileNameParts[0];
+            $patternName = Pattern::extractPatternName($content);
 
             if (!($pattern = @$this->patterns[$patternName])) {
                 $this->patterns[$patternName] = $pattern = new Pattern($this, $patternName);
