@@ -1,9 +1,27 @@
 <div id="{{ pattern.id }}" style="border: 1px solid red">
 
-{% for variant in pattern.variants %}
+    <h2>Dies ist das Pattern <strong>{{ pattern.name }}</strong></h2>
 
-    {% include "@lab/content/_variant.html.twig" %}
+    {% if pattern.documentation %}
+        {{ pattern.documentation.html | raw }}
+    {% endif %}
 
-{% endfor %}
+    {% if pattern.otherVariants %}
+        <p>Das Pattern hat folgende Hauptvariante:</p>
+    {% endif %}
+
+    {% include "@lab/content/_variant.html.twig" with {variant: pattern.mainVariant} %}
+
+    {% if pattern.otherVariants %}
+        <p>Außerdem gibt es folgende andere Varianten:</p>
+
+        {% for variant in pattern.otherVariants %}
+
+            <h3>{{ pattern.name }}--{{ variant.name }}</h3>
+
+            {% include "@lab/content/_variant.html.twig" %}
+
+        {% endfor %}
+    {% endif %}
 
 </div>

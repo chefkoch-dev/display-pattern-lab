@@ -35,16 +35,67 @@ class Pattern extends AbstractNode
     }
 
     /**
+     * @return Variant|null
+     */
+    public function getMainVariant()
+    {
+        return @$this->variants[''];
+    }
+
+    /**
+     * @return Variant[]
+     */
+    public function getOtherVariants()
+    {
+        return array_filter(
+            $this->getVariants(),
+            function (Variant $variant) {
+                return !$variant->isMainVariant();
+            }
+        );
+    }
+
+    /**
      * @param File[] $file
      */
     public function addFile(File $file)
     {
-        $variantName = preg_replace('(^' . preg_quote($this->getName() . '--') . ')', '', $file->getFilenameWithoutExtension());
+        $variantName = Pattern::extractVariantName($file);
 
         if (!($variant = @$this->variants[$variantName])) {
             $this->variants[$variantName] = $variant = new Variant($this, $variantName);
         }
 
         $variant->addFile($file);
+    }
+
+    /**
+     * @param File $file
+     * @return string
+     */
+    public static function extractPatternName(File $file)
+    {
+        return self::extractNameParts($file)[0];
+    }
+
+    /**
+     * @param File $file
+     * @return string
+     */
+    public static function extractVariantName(File $file)
+    {
+        $nameParts = self::extractNameParts($file);
+        array_shift($nameParts);
+        return implode('--', $nameParts);
+    }
+
+    /**
+     * @param File $file
+     * @return array
+     */
+    private static function extractNameParts(File $file)
+    {
+        $fileNameWithoutExtension = $file->getFilenameWithoutExtension();
+        return explode('--', $fileNameWithoutExtension);
     }
 }

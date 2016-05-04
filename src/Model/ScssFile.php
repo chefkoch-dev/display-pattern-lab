@@ -2,6 +2,6 @@
 
 namespace Chefkoch\DisplayPatternLab\Model;
 
-class TwigFile extends File
+class ScssFile extends File
 {
 }
