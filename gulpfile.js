@@ -14,7 +14,7 @@ var batch = require('gulp-batch');
 gulp.task('default', ['serve']);
 
 
-gulp.task('serve', ['twig', 'sass', 'lab-js', 'lab-sass', 'watch'], function() {
+gulp.task('serve', ['build', 'watch'], function() {
 
     browserSync.init({
         server: {
@@ -28,7 +28,9 @@ gulp.task('serve', ['twig', 'sass', 'lab-js', 'lab-sass', 'watch'], function() {
     
 });
 
-gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-sass']);
+
+gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-sass', 'assets']);
+
 
 gulp.task('watch', function(){
     
@@ -84,10 +86,17 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
+
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
         .pipe(shell(['php -d xdebug.remote_enable=On -d xdebug.remote_host=172.123.123.1 src/generate.php \'' + JSON.stringify(config) + '\'']))
+});
+
+
+gulp.task('assets', function () {
+    return gulp.src('vendor/chefkoch/display-patterns/assets/**/*', {
+    }).pipe(gulp.dest('output/assets'));
 });
 
 

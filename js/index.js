@@ -1,30 +1,34 @@
-window.onload = adjustIframeHeight
-window.sizer = adjustIframeWidth
+window.onload = adjustAllIframeHeight
+window.sizer = adjustAllIframeWidth
 
-var $ = document.querySelectorAll
-
-function displayIframe(iFrame){
-  iframe.style
+var breakPoints = {
+  s: "320px",
+  m: "786px",
+  l: "1200px"
 }
 
 
-function adjustIframeWidth(size){
-  var iFrames = $('iframe')
+/* Helpers */
+function getAll(selector){
+  return document.querySelectorAll(selector)
+}
 
-  ;[].map.call(iFrames, (frame)=>{
-    debugger
-    frame.style.width = size
-    return
+
+function adjustAllIframeHeight(){
+  [].map.call(getAll('iframe'), adjustIFrameHeight)
+}
+
+
+function adjustAllIframeWidth(breakPoint){
+  [].map.call(getAll('iframe'), function(iFrame){
+    iFrame.style.width = breakPoints[breakPoint]
+    adjustAllIframeHeight(iFrame)
   })
 }
 
-function adjustIframeHeight(){
-  var iFrames = $('iframe')
 
-  ;[].map.call(iFrames, (frame)=>{
-    var realHeight = frame.contentWindow.document.body.offsetHeight
-    frame.style.height = realHeight+"px"
+function adjustIFrameHeight(iframe){
+    var realHeight = iframe.contentWindow.document.body.offsetHeight
+    iframe.style.height = realHeight+"px"
     return
-  })
-
 }
