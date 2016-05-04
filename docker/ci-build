@@ -16,7 +16,7 @@ docker build -t dr.chefkoch.net/$K8S_PROJECT images/prod
 
 if [ "${IMAGE_TAG}" != "latest" ]
 then
-    docker tag -f $K8S_PROJECT:latest $K8S_PROJECT:$IMAGE_TAG
+    docker tag -f dr.chefkoch.net/$K8S_PROJECT:latest dr.chefkoch.net/$K8S_PROJECT:$IMAGE_TAG
 fi
 
 rm -rf images/prod/output
