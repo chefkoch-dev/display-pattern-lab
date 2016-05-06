@@ -1,0 +1,16 @@
+<table class="frontmatter">
+    <thead>
+        <tr>
+            {% for key in frontmatter|keys %}
+                <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for key, value in frontmatter %}
+                <td>{{ value|dump }}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>

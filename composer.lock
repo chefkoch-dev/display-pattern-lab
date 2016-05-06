@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0267f5125248788f5e559a15d2855b2c",
-    "content-hash": "c849a7ed8eb45a531ecb8ab3c0a90033",
+    "hash": "b0824a27e5d5a078b01c16425565821d",
+    "content-hash": "220000884a3c87b3f3547df9939f4096",
     "packages": [
         {
             "name": "chefkoch/display-patterns",
@@ -23,6 +23,48 @@
             },
             "type": "library",
             "time": "2016-05-03 08:26:58"
+        },
+        {
+            "name": "kzykhys/yaml-front-matter",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kzykhys/YamlFrontMatter.git",
+                "reference": "1f78c23564d8c3581502a1971f76148a9d0dd1e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kzykhys/YamlFrontMatter/zipball/1f78c23564d8c3581502a1971f76148a9d0dd1e5",
+                "reference": "1f78c23564d8c3581502a1971f76148a9d0dd1e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/yaml": ">=2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kazuyuki Hayashi",
+                    "email": "hayashi@valnur.net"
+                }
+            ],
+            "description": "YAML Front-matter Parser/Dumper for PHP",
+            "keywords": [
+                "front-matter",
+                "parser",
+                "yaml"
+            ],
+            "time": "2013-12-25 05:37:30"
         },
         {
             "name": "michelf/php-markdown",
