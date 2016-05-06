@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0267f5125248788f5e559a15d2855b2c",
+    "hash": "86206d07808e990f5e8b110b78084a65",
     "content-hash": "c849a7ed8eb45a531ecb8ab3c0a90033",
     "packages": [
         {
@@ -13,16 +13,16 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "bf96369355b9251ee76a111005c9163b96d75e3b"
+                "reference": "592916fc2fd11fcf8e903d6db687038332ade69a"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-8e62a4.zip",
-                "reference": "bf96369355b9251ee76a111005c9163b96d75e3b",
-                "shasum": "950bd967931672b897fe1d694b6eefffdb021494"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-c24c78.zip",
+                "reference": "592916fc2fd11fcf8e903d6db687038332ade69a",
+                "shasum": "99b7f5f67e52e8df2cced257a08d5926247975bd"
             },
             "type": "library",
-            "time": "2016-05-03 08:26:58"
+            "time": "2016-05-04 14:44:22"
         },
         {
             "name": "michelf/php-markdown",
@@ -77,7 +77,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -126,7 +126,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
