@@ -15,12 +15,14 @@ cp -R ../output images/prod/
 docker build -t dr.chefkoch.net/$K8S_PROJECT images/prod
 
 if [ "${IMAGE_TAG}" != "latest" ]
-docker tag -f $K8S_PROJECT:latest $K8S_PROJECT:$IMAGE_TAG
+then
+    docker tag -f dr.chefkoch.net/$K8S_PROJECT:latest dr.chefkoch.net/$K8S_PROJECT:$IMAGE_TAG
 fi
 
 rm -rf images/prod/output
 
 if [ "${BRANCH_NAME}" == "master" ]
+then
     docker push dr.chefkoch.net/$K8S_PROJECT:latest
 fi
 

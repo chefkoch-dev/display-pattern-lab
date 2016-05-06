@@ -4,8 +4,11 @@ set -e
 
 pushd "$(dirname $0)" > /dev/null
 
+mkdir ../build
+printf 'composer update triggered' > ../build/commit.txt
+
 ./run dr.chefkoch.net/display-pattern-lab-dev rm -rf node_modules vendor/chefkoch/display-patterns/node_modules
 ./run dr.chefkoch.net/display-pattern-lab-dev npm install
-./run dr.chefkoch.net/display-pattern-lab-dev composer update
+./run dr.chefkoch.net/display-pattern-lab-dev composer --no-interaction --no-ansi update >> ../build/commit.txt
 ./run dr.chefkoch.net/display-pattern-lab-dev bash -c "cd vendor/chefkoch/display-patterns && npm install"
 ./run dr.chefkoch.net/display-pattern-lab-dev node_modules/.bin/gulp build
