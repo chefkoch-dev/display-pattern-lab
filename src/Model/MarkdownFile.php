@@ -3,6 +3,7 @@
 namespace Chefkoch\DisplayPatternLab\Model;
 
 use Michelf\Markdown;
+use KzykHys\FrontMatter\FrontMatter;
 
 class MarkdownFile extends File
 {
@@ -12,6 +13,17 @@ class MarkdownFile extends File
      */
     public function getHtml()
     {
-        return Markdown::defaultTransform($this->getContents());
+        $document = FrontMatter::parse($this->getContents());
+
+        $markup = '';
+        if ($document->getConfig()) {
+            $markup .= $GLOBALS['twig']->render(
+                '@lab/content/_frontmatter.html.twig',
+                [ 'frontmatter' => $document->getConfig() ]
+            );
+        }
+
+        $markup .= Markdown::defaultTransform($document->getContent());
+        return $markup;
     }
 }

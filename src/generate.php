@@ -2,6 +2,8 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
+use Symfony\Component\Yaml\Yaml;
+
 $config = json_decode($argv[1], true);
 
 $labTwigTemplatePath = realpath(__DIR__ . '/../html');
@@ -16,6 +18,11 @@ $indexFileName = basename($config['scss']['indexFile']);
 $cssFile = './css/' . str_replace('.scss', '.css', $indexFileName);
 
 $twig->addGlobal('displayPatternsCss', $cssFile);
+
+$filter = new Twig_SimpleFilter('dump', function ($string) {
+    return '<pre>' . trim(Yaml::dump($string, /*inline*/1, /*indent*/2)) . '</pre>';
+}, ['is_safe' => ['html']]);
+$twig->addFilter($filter);
 
 $factory = new \Chefkoch\DisplayPatternLab\Model\Factory();
 
