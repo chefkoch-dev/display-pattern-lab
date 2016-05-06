@@ -1,11 +1,16 @@
 
-{% if variant.documentation %}
+{% if variant.documentation.config %}
+    <p>Es gibt Meta-Informationen zu dieser Variante:</p>
+    {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: variant.documentation.config} %}
+{% endif %}
+
+{% if variant.documentation.html %}
     {{ variant.documentation.html | raw }}
 {% endif %}
 
 {% if variant.data %}
     <p>Dies sind die Beispieldaten:</p>
-    <pre>{{ variant.dataAsString }}</pre>
+    <pre>{{ variant.data | dump(100) }}</pre>
 {% endif %}
 
 {% if variant.twigfile %}

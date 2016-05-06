@@ -10,7 +10,8 @@
         "twig/twig": "~1.24.0",
         "symfony/yaml": "~3.0.0",
         "chefkoch/display-patterns": "dev-master",
-        "michelf/php-markdown": "~1.6.0"
+        "michelf/php-markdown": "~1.6.0",
+        "kzykhys/yaml-front-matter": "^1.0"
     },
     "config": {
         "secure-http": false

@@ -82,12 +82,7 @@ class Variant extends AbstractNode
 
         return $data;
     }
-
-    public function getDataAsString()
-    {
-        return Yaml::dump($this->getData(), 100);
-    }
-
+    
     /**
      * @return TwigFile
      */
