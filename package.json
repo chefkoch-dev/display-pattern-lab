@@ -11,7 +11,9 @@
     "gulp-sass": "^2.1.1",
     "gulp-shell": "^0.5.2",
     "gulp-watch": "^4.3.5",
-    "interact.js": "^1.2.6"
+    "interact.js": "^1.2.6",
+    "jquery": "^2.2.3",
+    "lity": "^1.6.6"
   },
   "scripts": {
     "gulp": "node_modules/.bin/gulp"

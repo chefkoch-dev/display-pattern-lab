@@ -1,6 +1,8 @@
 window.onload = adjustIframeHeight
 window.sizer = adjustIframeWidth
 
+require('lity')
+
 var $ = document.querySelectorAll
 
 function displayIframe(iFrame){
