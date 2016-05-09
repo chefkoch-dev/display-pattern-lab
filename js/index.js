@@ -4,7 +4,7 @@ var $ = require('jquery');
 require('lity');
 
 // iFrames resizing
-$(document).ready(function () {
+$(function () {
   var lastbreakPoint;
 
   function adjustIFrameHeight(iframe) {
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 
 // Navigation / Content loading
-$(document).ready(function() {
+$(function() {
 
   function fillIFrameWithContent(iframe){
     $(iframe).attr('srcdoc', $(iframe).data('srcdoc'));
