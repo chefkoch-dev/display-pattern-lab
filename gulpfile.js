@@ -14,7 +14,7 @@ var batch = require('gulp-batch');
 gulp.task('default', ['serve']);
 
 
-gulp.task('serve', ['twig', 'sass', 'lab-js', 'lab-sass', 'watch'], function() {
+gulp.task('serve', ['build', 'watch'], function() {
 
     browserSync.init({
         server: {
@@ -28,7 +28,9 @@ gulp.task('serve', ['twig', 'sass', 'lab-js', 'lab-sass', 'watch'], function() {
     
 });
 
-gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-sass']);
+
+gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-js-vendor', 'lab-sass', 'assets']);
+
 
 gulp.task('watch', function(){
     
@@ -84,6 +86,7 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
+
 gulp.task('twig', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
@@ -91,8 +94,19 @@ gulp.task('twig', function() {
 });
 
 
+gulp.task('assets', function () {
+    return gulp.src('vendor/chefkoch/display-patterns/assets/**/*', {
+    }).pipe(gulp.dest('output/assets'));
+});
+
+
 gulp.task('lab-js', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
         .pipe(shell('node_modules/.bin/browserify js/index.js -o output/lab/lab.js'))
+});
+
+gulp.task('lab-js-vendor', function() {
+    return gulp.src('js/vendor/**/*', {
+    }).pipe(gulp.dest('output/lab/vendor'));
 });

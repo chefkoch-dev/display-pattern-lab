@@ -10,7 +10,7 @@
 
 {% if variant.data %}
     <p>Dies sind die Beispieldaten:</p>
-    <pre>{{ variant.data | dump(100) }}</pre>
+    <pre><code class="json">{{ variant.dataAsString }}</code></pre>
 {% endif %}
 
 {% if variant.twigfile %}
@@ -30,22 +30,22 @@
         </html>
     {% endset %}
 
-    <iframecontainer><iframe scrolling="no" seamless="seamless" srcdoc="{{ iframeContent|e }}"></iframe></iframecontainer>
+    <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="{{ iframeContent|e }}"></iframe>
 
     <p>Hier das gerenderte HTML:</p>
-    <pre>
+    <pre><code class="html">
         {{ patternHtml|e }}
-    </pre>
+    </code></pre>
 
     <p>Hier der Quelltext des Templates:</p>
-    <pre>
+    <pre><code class="twig">
         {{ variant.twigfile.contents }}
-    </pre>
+    </code></pre>
 {% endif %}
 
 {% if variant.scssfile %}
     <p>Diese Variante hat eine eigene Scss-Datei:</p>
-    <pre>
+    <pre><code class="scss">
         {{ variant.scssfile.contents }}
-    </pre>
+    </code></pre>
 {% endif %}

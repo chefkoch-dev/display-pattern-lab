@@ -1,14 +1,16 @@
+@import "node_modules/lity/dist/lity";
+
 html, body {
   margin: 0;
 }
 
 body {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 h1,h2,h3 {
-  text-align: center;
-  background: lightgray;
+  font-family: monospace;
+  text-align: left;
   box-shadow: 0px 2px 2px 0px gray;
 }
 
@@ -18,11 +20,10 @@ iframe {
   width: inherit;
   margin: 0 auto;
   border: none;
-  transition: 1s width linear;
 }
 
 iframe.small {
-  width: 300px;
+  width: 320px;
 }
 
 iframe.medium {
@@ -33,7 +34,15 @@ iframe.large {
   width: 1200px;
 }
 
-@import "node_modules/lity/dist/lity";
+
+.pattern {
+  display: none;
+}
+
+.directory {
+  display: none;
+}
+
 
 /*------------------------------------*\
   NAV
@@ -54,10 +63,13 @@ iframe.large {
     font-weight:bold;
     margin-bottom:10px;
     float:left; /* Clear floats */
+    cursor: pointer;
 }
 .ck-navigation__item{
     margin-right:10px;
     position:relative;
+    background: green;
+    cursor: pointer;
 }
 .ck-navigation a{
     display:block;
