@@ -1,58 +1,63 @@
-window.onload = adjustAllIframeHeight
-window.sizer = adjustAllIframeWidth
-window.goto = goto
 
 
-var breakPoints = {
-  s: "320px",
-  m: "786px",
-  l: "1200px"
-}
+var $ = require('jquery');
+require('lity');
 
-require('lity')
+// iFrames resizing
+$(document).ready(function () {
+  var lastbreakPoint;
 
-var $ = document.querySelectorAll.bind(document)
+  function adjustIFrameHeight(iframe) {
+    $(iframe).height(iframe.contentWindow.document.body.offsetHeight + 'px');
+  }
 
-/* Helpers */
-function getAll(selector){
-  return document.querySelectorAll(selector)
-}
+  $('.resize-iframe-toggle').click(function () {
+    var breakpoint = $(this).data('breakpoint');
+    $('iframe').each(function () {
+      if (lastbreakPoint) {
+        $(this).removeClass(lastbreakPoint);
+      }
+      $(this).addClass(breakpoint);
+
+      // adjust height
+      adjustIFrameHeight(this);
+
+      // reload (mobile/desktop switches)
+      this.contentWindow.location.reload();
+    })
+
+    lastbreakPoint = breakpoint;
+  });
+
+  $(window).load(function() {
+    $('iframe').each(function() {
+      adjustIFrameHeight(this);
+    });
+
+    $('.resize-iframe-toggle').first().click();
+  });
+})
 
 
-function adjustAllIframeHeight(){
-  [].map.call(getAll('iframe'), adjustIFrameHeight)
-}
+// Navigation / Content loading
+$(document).ready(function() {
 
+  function fillIFrameWithContent(iframe){
+    $(iframe).attr('srcdoc', $(iframe).data('srcdoc'));
+  }
 
-function adjustAllIframeWidth(breakPoint){
-  [].map.call(getAll('iframe'), function(iFrame){
+  $('.ck-nav-bar a').click(function() {
+    var targetElement = $($(this).attr('href'));
+
+    $('.pattern,.directory').hide();
     
-    iFrame.style.width = breakPoints[breakPoint]
-    
-    // adjust height
-    adjustAllIframeHeight(iFrame)
-    
-    // reload (mobile/desktop switches)
-    iFrame.contentWindow.location.reload()
-  })
-}
+    targetElement.show();
+    targetElement.parents().show();
+    targetElement.contents().show();
 
+    lastTarget = targetElement;
 
-function adjustIFrameHeight(iframe){
-    var realHeight = iframe.contentWindow.document.body.offsetHeight
-    iframe.style.height = realHeight+"px"
-    return
-}
-
-
-function fillIFrameWithContent(iFrame){
-  iFrame.srcdoc = iFrame.attributes['data-srcdoc'].textContent
-}
-
-
-function goto(id){
-  console.log('click'+id)
-  event.preventDefault()
-  event.stopPropagation()
-  document.location.hash = id
-}
+    // preventDefault + stopPropagation
+    return false;
+  });
+});

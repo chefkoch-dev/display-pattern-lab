@@ -1,14 +1,14 @@
 {% if not directory.isRootDirectory %}
-    {{ directory.name }}
+    <a href="#{{ directory.id }}">{{ directory.name }}</a>
 {% endif %}
 <ul class="ck-navigation">
     {% for directory in directory.subDirectories %}
-        <li class="ck-navigation__item" onclick="goto('#{{directory.id}}')">
+        <li class="ck-navigation__item">
             {% include "@lab/navigation/_directory.html.twig" %}
         </li>
     {% endfor %}
     {% for pattern in directory.patterns %}
-        <li class="ck-navigation__item" onclick="goto('#{{pattern.id}}')">
+        <li class="ck-navigation__item">
             {% include "@lab/navigation/_pattern.html.twig" %}
         </li>
     {% endfor %}

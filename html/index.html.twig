@@ -9,9 +9,9 @@
         <nav class="ck-nav-bar">
           {% include "@lab/navigation/_directory.html.twig" with {directory: tree} %}
           <ul  class="ck-labsizer">
-            <li class="ck-labsizer__item"><button onclick="sizer('s')">S</button></li>
-            <li class="ck-labsizer__item"><button onclick="sizer('m')">M</button></li>
-            <li class="ck-labsizer__item"><button onclick="sizer('l')">L</button></li>
+            <li class="ck-labsizer__item"><button class="resize-iframe-toggle" data-breakpoint="small">S</button></li>
+            <li class="ck-labsizer__item"><button class="resize-iframe-toggle" data-breakpoint="medium">M</button></li>
+            <li class="ck-labsizer__item"><button class="resize-iframe-toggle" data-breakpoint="large">L</button></li>
           </ul>
         </nav>
         {% include "@lab/content/_directory.html.twig" with {directory: tree} %}
