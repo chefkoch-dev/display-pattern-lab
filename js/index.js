@@ -7,34 +7,26 @@ require('lity');
 $(function () {
   var lastbreakPoint;
 
-  function adjustIFrameHeight(iframe) {
-    $(iframe).height(iframe.contentWindow.document.body.offsetHeight + 'px');
+  function adjustIFrameHeight(ev) {
+    $(ev.target).height(ev.target.contentWindow.document.body.offsetHeight + 'px');
   }
 
-  $('.resize-iframe-toggle').click(function () {
-    var breakpoint = $(this).data('breakpoint');
-    $('iframe').each(function () {
+
+  $('.resize-iframe-toggle').click(function(event) {
+    var breakpoint = $(event.target).data('breakpoint');
+    
+    $('iframe').each(function(index, iFrame) {
+
       if (lastbreakPoint) {
-        $(this).removeClass(lastbreakPoint);
+        $(iFrame).removeClass(lastbreakPoint);
       }
-      $(this).addClass(breakpoint);
+      $(iFrame).addClass(breakpoint);
 
-      // adjust height
-      adjustIFrameHeight(this);
-
-      // reload (mobile/desktop switches)
-      this.contentWindow.location.reload();
+      fillIFrameWithContent(null, iFrame)
+      iFrame.onload = function(){console.log("onload"+iFrame); adjustIFrameHeight({target: iFrame})}
     })
 
     lastbreakPoint = breakpoint;
-  });
-
-  $(window).load(function() {
-    $('iframe').each(function() {
-      adjustIFrameHeight(this);
-    });
-
-    $('.resize-iframe-toggle').first().click();
   });
 })
 
@@ -42,14 +34,14 @@ $(function () {
 // Navigation / Content loading
 $(function() {
 
-  function fillIFrameWithContent(iframe){
-    $(iframe).attr('srcdoc', $(iframe).data('srcdoc'));
-  }
-
-  $('.ck-nav-bar a').click(function() {
+  $('.ck-navigation a').click(function(ev) {
+    
     var targetElement = $($(this).attr('href'));
+    
 
     $('.navigatable-content').hide();
+    
+    targetElement.find("iframe").each(fillIFrameWithContent)
     
     targetElement.show();
     targetElement.parents('.navigatable-content').show();
@@ -61,3 +53,10 @@ $(function() {
 
   $('.navigatable-content').hide();
 });
+
+
+/* helpers */
+function fillIFrameWithContent(index, iframe){
+  $(iframe).attr('srcdoc', $(iframe).data('srcdoc'));
+  console.log("callbak")
+}

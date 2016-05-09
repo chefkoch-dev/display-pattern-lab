@@ -30,7 +30,7 @@
         </html>
     {% endset %}
 
-    <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="{{ iframeContent|e }}"></iframe>
+    <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="<div class='ck-container'>{{ iframeContent|e }}</div>"></iframe>
 
     <p>Hier das gerenderte HTML:</p>
     <pre><code class="html">
