@@ -3,7 +3,7 @@ window.sizer = adjustIframeWidth
 
 require('lity')
 
-var $ = document.querySelectorAll
+var $ = document.querySelectorAll.bind(document)
 
 function displayIframe(iFrame){
   iframe.style
