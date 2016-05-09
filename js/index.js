@@ -1,5 +1,7 @@
 window.onload = adjustAllIframeHeight
 window.sizer = adjustAllIframeWidth
+window.goto = goto
+
 
 var breakPoints = {
   s: "320px",
@@ -7,6 +9,7 @@ var breakPoints = {
   l: "1200px"
 }
 
+hljs.initHighlightingOnLoad()
 
 /* Helpers */
 function getAll(selector){
@@ -21,8 +24,14 @@ function adjustAllIframeHeight(){
 
 function adjustAllIframeWidth(breakPoint){
   [].map.call(getAll('iframe'), function(iFrame){
+    
     iFrame.style.width = breakPoints[breakPoint]
+    
+    // adjust height
     adjustAllIframeHeight(iFrame)
+    
+    // reload (mobile/desktop switches)
+    iFrame.contentWindow.location.reload()
   })
 }
 
@@ -31,4 +40,17 @@ function adjustIFrameHeight(iframe){
     var realHeight = iframe.contentWindow.document.body.offsetHeight
     iframe.style.height = realHeight+"px"
     return
+}
+
+
+function fillIFrameWithContent(iFrame){
+  iFrame.srcdoc = iFrame.attributes['data-srcdoc'].textContent
+}
+
+
+function goto(id){
+  console.log('click'+id)
+  event.preventDefault()
+  event.stopPropagation()
+  document.location.hash = id
 }

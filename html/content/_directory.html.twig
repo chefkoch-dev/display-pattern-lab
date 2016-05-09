@@ -1,4 +1,4 @@
-{% if not directory.isRootDirectory %}<h{{ directory.depth }} id="{{directory.id}}">{{ directory.title }}</h{{ directory.depth }}>{% endif %}
+{% if not directory.isRootDirectory %}<div class="directory" id="{{directory.id}}"><h{{ directory.depth }}>{{ directory.title }}</h{{ directory.depth }}>{% endif %}
 
 {% if directory.documentation %}
     {{ directory.documentation.html | raw }}
@@ -11,3 +11,5 @@
 {% for directory in directory.subDirectories %}
     {% include "@lab/content/_directory.html.twig" %}
 {% endfor %}
+
+{% if not directory.isRootDirectory %}</div>{% endif %}
