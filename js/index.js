@@ -1,32 +1,23 @@
-window.onload = adjustIframeHeight
-window.sizer = adjustIframeWidth
+var $ = require('jquery');
+require('lity');
 
-require('lity')
+$(document).ready(function () {
+  var lastbreakPoint;
 
-var $ = document.querySelectorAll.bind(document)
+  $('.resize-iframe-toggle').click(function () {
+    var breakpoint = $(this).data('breakpoint');
+    $('iframe').each(function () {
+      if (lastbreakPoint) {
+        $(this).removeClass(lastbreakPoint);
+      }
+      $(this).addClass(breakpoint);
+    })
+    lastbreakPoint = breakpoint;
+  }).first().click();
 
-function displayIframe(iFrame){
-  iframe.style
-}
-
-
-function adjustIframeWidth(size){
-  var iFrames = $('iframe')
-
-  ;[].map.call(iFrames, (frame)=>{
-    debugger
-    frame.style.width = size
-    return
-  })
-}
-
-function adjustIframeHeight(){
-  var iFrames = $('iframe')
-
-  ;[].map.call(iFrames, (frame)=>{
-    var realHeight = frame.contentWindow.document.body.offsetHeight
-    frame.style.height = realHeight+"px"
-    return
-  })
-
-}
+  $(window).load(function() {
+    $('iframe').each(function () {
+      $(this).height(this.contentWindow.document.body.offsetHeight + 'px');
+    });
+  });
+})

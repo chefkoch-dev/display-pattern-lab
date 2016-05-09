@@ -21,6 +21,18 @@ iframe {
   transition: 1s width linear;
 }
 
+iframe.small {
+  width: 300px;
+}
+
+iframe.medium {
+  width: 768px;
+}
+
+iframe.large {
+  width: 1200px;
+}
+
 @import "node_modules/lity/dist/lity";
 
 /*------------------------------------*\
