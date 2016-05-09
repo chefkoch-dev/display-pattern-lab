@@ -49,15 +49,15 @@ $(document).ready(function() {
   $('.ck-nav-bar a').click(function() {
     var targetElement = $($(this).attr('href'));
 
-    $('.pattern,.directory').hide();
+    $('.navigatable-content').hide();
     
     targetElement.show();
-    targetElement.parents().show();
-    targetElement.contents().show();
-
-    lastTarget = targetElement;
+    targetElement.parents('.navigatable-content').show();
+    targetElement.find('.navigatable-content').show();
 
     // preventDefault + stopPropagation
     return false;
   });
+
+  $('.navigatable-content').hide();
 });

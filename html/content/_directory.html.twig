@@ -1,4 +1,4 @@
-{% if not directory.isRootDirectory %}<div class="directory" id="{{directory.id}}"><h{{ directory.depth }}>{{ directory.title }}</h{{ directory.depth }}>{% endif %}
+{% if not directory.isRootDirectory %}<div class="directory navigatable-content" id="{{directory.id}}"><h{{ directory.depth }}>{{ directory.title }}</h{{ directory.depth }}>{% endif %}
 
 {% if directory.documentation.config %}
     <p>Es gibt Meta-Informationen zu diesem Ordner:</p>
