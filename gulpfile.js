@@ -29,7 +29,7 @@ gulp.task('serve', ['build', 'watch'], function() {
 });
 
 
-gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-sass', 'assets']);
+gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-js-vendor', 'lab-sass', 'assets']);
 
 
 gulp.task('watch', function(){
@@ -104,4 +104,9 @@ gulp.task('lab-js', function() {
     return gulp.src('', {read: false})
         .pipe(plumber())
         .pipe(shell('node_modules/.bin/browserify js/index.js -o output/lab/lab.js'))
+});
+
+gulp.task('lab-js-vendor', function() {
+    return gulp.src('js/vendor/**/*', {
+    }).pipe(gulp.dest('output/lab/vendor'));
 });
