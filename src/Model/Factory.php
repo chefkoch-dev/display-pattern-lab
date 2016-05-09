@@ -44,6 +44,7 @@ class Factory
                         )
                     )
                     ->depth($depth)
+                    ->sortByName()
                     ->path('(^' . preg_quote($file->getRelativePathname()) . ')');
 
                 $directory = new Directory($file);
