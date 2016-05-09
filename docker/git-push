@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+pushd "$(dirname $0)" > /dev/null
+
+git add ../composer.lock
+
+if ! git diff --quiet HEAD; then
+    git -c user.name="Maintenance Bot" -c user.email="team-magazin@chefkoch.de" commit -a -F  ../build/commit.txt
+    git remote add github ${bamboo_planRepository_repositoryUrl}
+    git push github "${bamboo_planRepository_branchName}"
+fi

@@ -2,7 +2,12 @@
 
     <h2>Dies ist das Pattern <strong>{{ pattern.name }}</strong></h2>
 
-    {% if pattern.documentation %}
+    {% if pattern.documentation.config %}
+        <p>Es gibt Metainformationen zu diesem Pattern:</p>
+        {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: pattern.documentation.config} %}
+    {% endif %}
+
+    {% if pattern.documentation.html %}
         {{ pattern.documentation.html | raw }}
     {% endif %}
 

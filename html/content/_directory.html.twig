@@ -1,6 +1,11 @@
 {% if not directory.isRootDirectory %}<h{{ directory.depth }} id="{{directory.id}}">{{ directory.title }}</h{{ directory.depth }}>{% endif %}
 
-{% if directory.documentation %}
+{% if directory.documentation.config %}
+    <p>Es gibt Meta-Informationen zu diesem Ordner:</p>
+    {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: directory.documentation.config} %}
+{% endif %}
+
+{% if directory.documentation.html %}
     {{ directory.documentation.html | raw }}
 {% endif %}
 

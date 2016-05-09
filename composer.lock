@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0267f5125248788f5e559a15d2855b2c",
-    "content-hash": "c849a7ed8eb45a531ecb8ab3c0a90033",
+    "hash": "b0824a27e5d5a078b01c16425565821d",
+    "content-hash": "220000884a3c87b3f3547df9939f4096",
     "packages": [
         {
             "name": "chefkoch/display-patterns",
@@ -13,16 +13,58 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "bf96369355b9251ee76a111005c9163b96d75e3b"
+                "reference": "15c9d3eb56a6ff1ff8948f0fb42ec86c918bdd1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-8e62a4.zip",
-                "reference": "bf96369355b9251ee76a111005c9163b96d75e3b",
-                "shasum": "950bd967931672b897fe1d694b6eefffdb021494"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-40a42e.zip",
+                "reference": "15c9d3eb56a6ff1ff8948f0fb42ec86c918bdd1f",
+                "shasum": "4c4db4fa11753f63d11aa81ee010cd544ce88ae9"
             },
             "type": "library",
-            "time": "2016-05-03 08:26:58"
+            "time": "2016-05-09 10:12:45"
+        },
+        {
+            "name": "kzykhys/yaml-front-matter",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kzykhys/YamlFrontMatter.git",
+                "reference": "1f78c23564d8c3581502a1971f76148a9d0dd1e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kzykhys/YamlFrontMatter/zipball/1f78c23564d8c3581502a1971f76148a9d0dd1e5",
+                "reference": "1f78c23564d8c3581502a1971f76148a9d0dd1e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/yaml": ">=2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kazuyuki Hayashi",
+                    "email": "hayashi@valnur.net"
+                }
+            ],
+            "description": "YAML Front-matter Parser/Dumper for PHP",
+            "keywords": [
+                "front-matter",
+                "parser",
+                "yaml"
+            ],
+            "time": "2013-12-25 05:37:30"
         },
         {
             "name": "michelf/php-markdown",
@@ -77,7 +119,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -126,7 +168,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

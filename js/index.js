@@ -7,6 +7,9 @@ var breakPoints = {
   l: "1200px"
 }
 
+require('lity')
+
+var $ = document.querySelectorAll.bind(document)
 
 /* Helpers */
 function getAll(selector){
