@@ -22,6 +22,7 @@ iframe {
   border: none;
 }
 
+// !breakpoint missing
 iframe.small {
   width: 320px;
 }
@@ -34,6 +35,20 @@ iframe.large {
   width: 1200px;
 }
 
+pre {
+  display: none;
+}
+
+.pattern {
+  margin-bottom: 100px;
+}
+
+.codetoggle {
+  margin: 0 auto;
+  display: block;
+}
+
+
 /*------------------------------------*\
   NAV
 \*------------------------------------*/
@@ -41,7 +56,7 @@ iframe.large {
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 40px;
+  height: 60px;
   background: green;
 }
 

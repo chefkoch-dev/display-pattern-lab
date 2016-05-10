@@ -32,20 +32,23 @@
 
     <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="<div class='ck-container'>{{ iframeContent|e }}</div>"></iframe>
 
-    <p>Hier das gerenderte HTML:</p>
-    <pre><code class="html">
-        {{ patternHtml|e }}
-    </code></pre>
-
-    <p>Hier der Quelltext des Templates:</p>
+    <button class="codetoggle">TWIG</button>
     <pre><code class="twig">
         {{ variant.twigfile.contents }}
     </code></pre>
-{% endif %}
-
-{% if variant.scssfile %}
-    <p>Diese Variante hat eine eigene Scss-Datei:</p>
-    <pre><code class="scss">
-        {{ variant.scssfile.contents }}
+    
+    {% if variant.scssfile %}
+        <button class="codetoggle">Diese Variante hat eine eigene Scss-Datei:</button>
+        <pre><code class="scss">
+            {{ variant.scssfile.contents }}
+        </code></pre>
+    {% endif %}
+    
+    
+    <button class="codetoggle">HTML</button>
+    <pre><code class="html">
+        {{ patternHtml|e }}
     </code></pre>
 {% endif %}
+
+
