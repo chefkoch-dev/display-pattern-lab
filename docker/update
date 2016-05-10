@@ -4,7 +4,7 @@ set -e
 
 pushd "$(dirname $0)" > /dev/null
 
-mkdir ../build
+mkdir -p ../build
 printf 'composer update triggered' > ../build/commit.txt
 
 docker pull dr.chefkoch.net/display-pattern-lab-dev
