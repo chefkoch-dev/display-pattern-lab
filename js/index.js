@@ -18,6 +18,7 @@ $(function () {
   $('.resize-iframe-toggle').click(function(event) {
     var breakpoint = $(event.target).data('breakpoint');
     
+    // only iframes within this navi section
     currentNavigationSelected.find("iframe").each(function(index, iFrame) {
 
       if (lastbreakPoint) {
@@ -43,6 +44,7 @@ $(function() {
     
     $('.navigatable-content').hide();
     
+    // init all iframes that can be found inside
     toArray(targetElement.find("iframe")).forEach(initIFrame)
     
     targetElement.show();
@@ -67,7 +69,7 @@ function toArray(object){
 
 function initIFrame(iFrame){
   fillIFrameWithContent(iFrame)
-  iFrame.onload = function(ev){ adjustIFrameHeight(iFrame) }
+  iFrame.onload = function(ev){ setTimeout(function() {adjustIFrameHeight(iFrame)}, 100) }
 }
 
 
@@ -77,5 +79,6 @@ function fillIFrameWithContent(iframe){
 
 
 function adjustIFrameHeight(iFrame) {
+  console.log(iFrame.contentWindow.document.body.offsetHeight)
   return $(iFrame).height(iFrame.contentWindow.document.body.offsetHeight + 'px');
 }

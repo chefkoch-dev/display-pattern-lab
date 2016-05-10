@@ -5,11 +5,14 @@
 {% endif %}
 
 {% if variant.documentation.html %}
-    {{ variant.documentation.html | raw }}
+    <button class="codetoggle">DOCS</button>
+    <pre class="documentation">
+      {{ variant.documentation.html | raw }}
+    </pre>
 {% endif %}
 
 {% if variant.data %}
-    <p>Dies sind die Beispieldaten:</p>
+    <p>Beispieldaten:</p>
     <pre><code class="json">{{ variant.dataAsString }}</code></pre>
 {% endif %}
 

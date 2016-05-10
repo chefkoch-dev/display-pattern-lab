@@ -1,12 +1,16 @@
-{% if not directory.isRootDirectory %}<div class="directory navigatable-content" id="{{directory.id}}"><h{{ directory.depth }}>{{ directory.title }}</h{{ directory.depth }}>{% endif %}
+{% if not directory.isRootDirectory %}<div class="directory navigatable-content" id="{{directory.id}}"><div class="headline"><h{{ directory.depth }}>{{ directory.title }}</h{{ directory.depth }}></div>{% endif %}
 
 {% if directory.documentation.config %}
-    <p>Es gibt Meta-Informationen zu diesem Ordner:</p>
-    {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: directory.documentation.config} %}
+    <p>Frontmatter: (meta)</p>
+      {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: directory.documentation.config} %}
+
 {% endif %}
 
 {% if directory.documentation.html %}
-    {{ directory.documentation.html | raw }}
+    <button class="codetoggle">DOCS</button>
+    <pre class="documentation">
+      {{ directory.documentation.html | raw }}
+    </pre>
 {% endif %}
 
 {% for pattern in directory.patterns %}

@@ -5,14 +5,54 @@ html, body {
 }
 
 body {
+  padding: 0px 15px;
   margin-top: 100px;
 }
 
 h1,h2,h3 {
+  pointer-events: none;
   font-family: monospace;
-  text-align: left;
-  box-shadow: 0px 2px 2px 0px gray;
+  text-align: center;
 }
+
+h1 {
+  color: #FF665E;
+}
+
+h2 {
+  color: #9d9d9d;
+}
+
+.headline {
+    overflow: hidden;
+    padding: 10px 0px;
+    line-height: 0.5;
+    text-align: center;
+    
+  & * {
+    display: inline-block;
+    position: relative;  
+  }
+  & *:before,
+  & *:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid lightgray;
+    top: 0;
+    width: 1000px;
+  }
+  & *:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  & *:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+}
+
+    
 
 iframe {
   overflow: hidden;
@@ -37,6 +77,9 @@ iframe.large {
 
 pre {
   display: none;
+  margin: 0 auto;
+  width: 79vw;
+  box-shadow: 0px 1px 2px 0px gray;
 }
 
 .pattern {
@@ -45,7 +88,12 @@ pre {
 
 .codetoggle {
   margin: 0 auto;
+  padding: 10px;
   display: block;
+  width: 80vw;
+  display: block;
+  box-shadow: 0px 1px 2px 0px gray;
+  margin-top: 30px;
 }
 
 
@@ -55,9 +103,11 @@ pre {
 .ck-nav-bar {
   position: fixed;
   top: 0px;
+  left: 0px;
   width: 100%;
   height: 60px;
-  background: green;
+  background: #618E26;
+  z-index: 10000;
 }
 
 .ck-navigation__item {
@@ -79,14 +129,14 @@ pre {
 .ck-navigation a{
     display:block;
     padding:5px;
-    color:#fff;
-    background:#333;
+    color:#333;
+    background:#618E26;
     text-decoration:none;
 }
 .ck-navigation a:hover{
     color:#fff;
-    background:#6b0c36;
-    text-decoration:underline;
+    background:#7BA344;
+    text-decoration:none;
 }
 
 /*--- DROPDOWN ---*/
@@ -108,7 +158,7 @@ pre {
     left:0; /* Bring back on-screen when needed */
 }
 .ck-navigation__item:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
-    background:#6b0c36;
+    background:#7BA344;
     text-decoration:underline;
 }
 .ck-navigation__item:hover ul a{ /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */

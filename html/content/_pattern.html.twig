@@ -1,24 +1,25 @@
-<div class="pattern navigatable-content" id="{{ pattern.id }}" style="border: 1px solid red">
-
-    <h2>Dies ist das Pattern <strong>{{ pattern.name }}</strong></h2>
+<div class="pattern navigatable-content" id="{{ pattern.id }}">
 
     {% if pattern.documentation.config %}
-        <p>Es gibt Metainformationen zu diesem Pattern:</p>
+        <p>Frontmatter: (meta)</p>
         {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: pattern.documentation.config} %}
     {% endif %}
 
     {% if pattern.documentation.html %}
-        {{ pattern.documentation.html | raw }}
+        <button class="codetoggle">DOCS</button>
+        <pre class="documentation">
+          {{ directory.documentation.html | raw }}
+        </pre>
     {% endif %}
 
     {% if pattern.otherVariants %}
-        <p>Das Pattern hat folgende Hauptvariante:</p>
+        <p>Hauptvariante:</p>
     {% endif %}
 
     {% include "@lab/content/_variant.html.twig" with {variant: pattern.mainVariant} %}
 
     {% if pattern.otherVariants %}
-        <p>Außerdem gibt es folgende andere Varianten:</p>
+        <p>andere Varianten:</p>
 
         {% for variant in pattern.otherVariants %}
 
