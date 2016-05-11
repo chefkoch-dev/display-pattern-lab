@@ -17,7 +17,7 @@
 {% endif %}
 
 {% if variant.twigfile %}
-    <p>So sieht das Pattern gerendert aus:</p>
+    <h2>Vorschau:</h2>
 
     {% set patternHtml %}
         {% include "@display-patterns/" ~ variant.twigfile.file.relativePathname with variant.data %}
