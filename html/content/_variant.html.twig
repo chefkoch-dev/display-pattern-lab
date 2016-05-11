@@ -28,12 +28,14 @@
             <link rel="stylesheet" type="text/css" href="{{ displayPatternsCss }}" />
         </head>
             <body>
-                {{ patternHtml|raw }}
+                <div class="ck-container">
+                    {{ patternHtml|raw }}
+                </div>
             </body>
         </html>
     {% endset %}
 
-    <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="<div class='ck-container'>{{ iframeContent|e }}</div>"></iframe>
+    <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="{{ iframeContent|e }}"></iframe>
 
     <button class="codetoggle">TWIG</button>
     <pre><code class="twig">
