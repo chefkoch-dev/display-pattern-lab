@@ -1,14 +1,10 @@
-
 {% if variant.documentation.config %}
     <p>Es gibt Meta-Informationen zu dieser Variante:</p>
     {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: variant.documentation.config} %}
 {% endif %}
 
 {% if variant.documentation.html %}
-    <button class="codetoggle">DOCS</button>
-    <pre class="documentation">
-      {{ variant.documentation.html | raw }}
-    </pre>
+    {{ variant.documentation.html | raw }}
 {% endif %}
 
 {% if variant.data %}
@@ -37,23 +33,23 @@
 
     <iframe id="iframe-{{pattern.id}}" scrolling="no" seamless="seamless" data-srcdoc="{{ iframeContent|e }}"></iframe>
 
-    <button class="codetoggle">TWIG</button>
-    <pre><code class="twig">
-        {{ variant.twigfile.contents }}
-    </code></pre>
-    
-    {% if variant.scssfile %}
-        <button class="codetoggle">Diese Variante hat eine eigene Scss-Datei:</button>
-        <pre><code class="scss">
-            {{ variant.scssfile.contents }}
-        </code></pre>
-    {% endif %}
-    
-    
-    <button class="codetoggle">HTML</button>
-    <pre><code class="html">
-        {{ patternHtml|e }}
-    </code></pre>
+    {#<button class="codetoggle">TWIG</button>#}
+    {#<pre><code class="twig">#}
+        {#{{ variant.twigfile.contents }}#}
+    {#</code></pre>#}
+    {##}
+    {#{% if variant.scssfile %}#}
+        {#<button class="codetoggle">Diese Variante hat eine eigene Scss-Datei:</button>#}
+        {#<pre><code class="scss">#}
+            {#{{ variant.scssfile.contents }}#}
+        {#</code></pre>#}
+    {#{% endif %}#}
+    {##}
+    {##}
+    {#<button class="codetoggle">HTML</button>#}
+    {#<pre><code class="html">#}
+        {#{{ patternHtml|e }}#}
+    {#</code></pre>#}
 {% endif %}
 
 
