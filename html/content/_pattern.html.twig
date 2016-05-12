@@ -6,15 +6,12 @@
     {% endif %}
 
     {% if pattern.documentation.html %}
-        <button class="codetoggle">DOCS</button>
-        <pre class="documentation">
           {{ directory.documentation.html | raw }}
-        </pre>
     {% endif %}
 
-    {% if pattern.otherVariants %}
-        <p>Hauptvariante:</p>
-    {% endif %}
+    {#{% if pattern.otherVariants %}#}
+        {#<p>Hauptvariante:</p>#}
+    {#{% endif %}#}
 
     {% include "@lab/content/_variant.html.twig" with {variant: pattern.mainVariant} %}
 

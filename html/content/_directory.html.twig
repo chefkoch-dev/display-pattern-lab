@@ -7,10 +7,7 @@
 {% endif %}
 
 {% if directory.documentation.html %}
-    <button class="codetoggle">DOCS</button>
-    <pre class="documentation">
       {{ directory.documentation.html | raw }}
-    </pre>
 {% endif %}
 
 {% for pattern in directory.patterns %}

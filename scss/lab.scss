@@ -110,17 +110,17 @@ pre {
   box-shadow: 0 0 2px 0 gray;
 }
 
-.ck-navigation__item {
-  display: inline-block;
-}
 .ck-navigation {
     list-style: none;
     font-weight: bold;
-    margin-bottom: 10px;
     float: left; /* Clear floats */
     cursor: pointer;
+    margin: 10px 0 0;
+    padding: 0;
+    transition: all 0.3s linear;
 }
 .ck-navigation__item {
+    display: inline-block;
     margin-right: 10px;
     position: relative;
     background: green;
@@ -132,30 +132,37 @@ pre {
     color: #333;
     background: #618E26;
     text-decoration: none;
-}
-.ck-navigation a:hover {
-    color: #fff;
-    background: #7BA344;
-    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+    }
 }
 
+
 /*--- DROPDOWN ---*/
-.ck-navigation ul {
-    background: #fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
-    background: rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
-    list-style: none;
-    position: absolute;
-    left: -9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
-}
-.ck-navigation a {
-    white-space: nowrap; /* Stop text wrapping and creating multi-line dropdown items */
-}
-.ck-navigation__item {
-    padding-top: 1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+.ck-navigation .ck-navigation {
+    box-shadow: rgba(#000, .4) 0 3px 3px;
+    display: none;
     float: none;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    width: 200px;
+    z-index: 20;
 }
-.ck-navigation__item:hover ul { /* Display the dropdown on hover */
-    left: 0; /* Bring back on-screen when needed */
+.ck-navigation .ck-navigation .ck-navigation {
+    left: 200px;
+    top: 0;
+}
+
+.ck-navigation__item .ck-navigation__item {
+    display: block;
+    margin: 0;
+    border-bottom: 1px solid lightgrey;
+}
+.ck-navigation__item:hover > ul { /* Display the dropdown on hover */
+    display: block;
 }
 .ck-navigation__item:hover a { /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
     background: #7BA344;
