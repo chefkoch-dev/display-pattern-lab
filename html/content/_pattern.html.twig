@@ -8,11 +8,7 @@
     {% if pattern.documentation.html %}
           {{ directory.documentation.html | raw }}
     {% endif %}
-
-    {#{% if pattern.otherVariants %}#}
-        {#<p>Hauptvariante:</p>#}
-    {#{% endif %}#}
-
+    <h3>{{ pattern.name }}</h3>
     {% include "@lab/content/_variant.html.twig" with {variant: pattern.mainVariant} %}
 
     {% if pattern.otherVariants %}
@@ -20,7 +16,7 @@
 
         {% for variant in pattern.otherVariants %}
 
-            <h3>{{ pattern.name }}--{{ variant.name }}</h3>
+            <h4>{{ pattern.name }}--{{ variant.name }}</h4>
 
             {% include "@lab/content/_variant.html.twig" %}
 

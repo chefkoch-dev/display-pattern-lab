@@ -8,13 +8,10 @@
 {% endif %}
 
 {% if variant.data %}
-    <p>Beispieldaten:</p>
     <pre><code class="json">{{ variant.dataAsString }}</code></pre>
 {% endif %}
 
 {% if variant.twigfile %}
-    <h2>Vorschau:</h2>
-
     {% set patternHtml %}
         {% include "@display-patterns/" ~ variant.twigfile.file.relativePathname with variant.data %}
     {% endset %}
