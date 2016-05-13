@@ -7,7 +7,7 @@
             {% include "@lab/navigation/_directory.html.twig" %}
         </li>
     {% endfor %}
-    {% for pattern in directory.patterns %}
+    {% for pattern in directory.patterns if directory.patterns|length > 1 %}
         <li class="ck-navigation__item">
             {% include "@lab/navigation/_pattern.html.twig" %}
         </li>
