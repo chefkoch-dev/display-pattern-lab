@@ -10,6 +10,6 @@ class JsonFile extends DataFile
      */
     public function getData()
     {
-        return json_decode($this->getContents(), true);
+        return (array) json_decode($this->getContents(), true);
     }
 }

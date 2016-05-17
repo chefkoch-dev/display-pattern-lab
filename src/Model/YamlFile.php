@@ -12,6 +12,6 @@ class YamlFile extends DataFile
      */
     public function getData()
     {
-        return Yaml::parse($this->getContents());
+        return (array) Yaml::parse($this->getContents());
     }
 }
