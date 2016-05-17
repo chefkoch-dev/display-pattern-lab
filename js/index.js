@@ -1,8 +1,10 @@
 var $ = require('jquery');
 var currentNavigationSelected; //only load iframes currently selected (much much much faster)
 
+
 require('lity');
 hljs.initHighlightingOnLoad();
+
 
 // code show/hide buttons
 $(function(){
@@ -10,6 +12,7 @@ $(function(){
     $(ev.target.nextElementSibling).toggle()
   })
 })
+
 
 // iFrames resizing
 $(function () {
@@ -45,7 +48,8 @@ $(function() {
     $('.navigatable-content').hide();
     
     // init all iframes that can be found inside
-    toArray(targetElement.find("iframe")).forEach(initIFrame)
+    toArray(targetElement.find("iframe"))
+    .forEach(initIFrame)
     
     targetElement.show();
     targetElement.parents('.navigatable-content').show();
@@ -61,7 +65,7 @@ $(function() {
 
 /* helpers */
 
-// because jquerys .each sucks ass because index and item are reversed
+// jquerys .each sucks because index and item are reversed
 function toArray(object){
   return [].slice.call(object)
 }
@@ -69,7 +73,10 @@ function toArray(object){
 
 function initIFrame(iFrame){
   fillIFrameWithContent(iFrame)
-  iFrame.onload = function(ev){ setTimeout(function() {adjustIFrameHeight(iFrame)}, 100) }
+  iFrame.onload = function(ev){ 
+    console.log("readyiframe"+ev.target)
+    setTimeout(function() {adjustIFrameHeight(iFrame)}, 200) 
+  }
 }
 
 
@@ -79,6 +86,7 @@ function fillIFrameWithContent(iframe){
 
 
 function adjustIFrameHeight(iFrame) {
+  console.log("adjust height"); 
   console.log(iFrame.contentWindow.document.body.offsetHeight)
   return $(iFrame).height(iFrame.contentWindow.document.body.offsetHeight + 'px');
 }
