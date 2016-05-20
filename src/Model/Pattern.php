@@ -70,6 +70,20 @@ class Pattern extends AbstractNode
     }
 
     /**
+     * @return bool
+     */
+    public function hasTemplate()
+    {
+        foreach ($this->getVariants() as $variant) {
+            if ($variant->getTwigfile()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @param File $file
      * @return string
      */

@@ -1,26 +1,28 @@
-<div class="pattern navigatable-content" id="{{ pattern.id }}">
+{% if pattern.hasTemplate %}
+    <div class="pattern navigatable-content" id="{{ pattern.id }}">
 
-    {% if pattern.documentation.config %}
-        <p>Frontmatter: (meta)</p>
-        {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: pattern.documentation.config} %}
-    {% endif %}
+        {% if pattern.documentation.config %}
+            <p>Frontmatter: (meta)</p>
+            {% include "@lab/content/_frontmatter.html.twig" with {frontmatter: pattern.documentation.config} %}
+        {% endif %}
 
-    {% if pattern.documentation.html %}
-          {{ directory.documentation.html | raw }}
-    {% endif %}
-    <h3>{{ pattern.name }}</h3>
-    {% include "@lab/content/_variant.html.twig" with {variant: pattern.mainVariant} %}
+        {% if pattern.documentation.html %}
+              {{ directory.documentation.html | raw }}
+        {% endif %}
+        <h3>{{ pattern.name }}</h3>
+        {% include "@lab/content/_variant.html.twig" with {variant: pattern.mainVariant} %}
 
-    {% if pattern.otherVariants %}
-        <p>andere Varianten:</p>
+        {% if pattern.otherVariants %}
+            <p>andere Varianten:</p>
 
-        {% for variant in pattern.otherVariants %}
+            {% for variant in pattern.otherVariants %}
 
-            <h4>{{ pattern.name }}--{{ variant.name }}</h4>
+                <h4>{{ pattern.name }}--{{ variant.name }}</h4>
 
-            {% include "@lab/content/_variant.html.twig" %}
+                {% include "@lab/content/_variant.html.twig" %}
 
-        {% endfor %}
-    {% endif %}
+            {% endfor %}
+        {% endif %}
 
-</div>
+    </div>
+{% endif %}
