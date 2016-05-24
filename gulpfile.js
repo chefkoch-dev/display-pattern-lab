@@ -2,6 +2,9 @@
 var config = require('./gulpconfig.json');
 
 var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var postcssFlexibility = require('postcss-flexibility');
 var browserSync = require('browser-sync').create();
 var shell = require('gulp-shell');
 var sass = require('gulp-sass');
@@ -77,11 +80,16 @@ gulp.task('lab-sass', function() {
 
 
 gulp.task('sass', function() {
+    var processors = [
+        autoprefixer({browsers: ['last 3 versions']}),
+        postcssFlexibility()
+    ];
     return gulp.src(config.scss.indexFile)
         .pipe(plumber())
         .pipe(sass({
             includePaths: config.scss.includePaths
         }))
+        .pipe(postcss(processors))
         .pipe(gulp.dest("output/css"))
         .pipe(browserSync.stream());
 });
@@ -109,4 +117,13 @@ gulp.task('lab-js', function() {
 gulp.task('lab-js-vendor', function() {
     return gulp.src('js/vendor/**/*', {
     }).pipe(gulp.dest('output/lab/vendor'));
+});
+
+gulp.task('postcss', function () {
+    var processors = [
+        autoprefixer({browsers: ['last 3 versions']}),
+    ];
+    return gulp.src("output/css")
+        .pipe(postcss(processors))
+        .pipe(gulp.dest('./dest'));
 });

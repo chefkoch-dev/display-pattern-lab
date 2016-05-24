@@ -17,5 +17,12 @@
   },
   "scripts": {
     "gulp": "node_modules/.bin/gulp"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "flexibility": "^1.0.5",
+    "gulp-postcss": "^6.1.1",
+    "postcss": "^5.0.21",
+    "postcss-flexibility": "^1.0.3"
   }
 }
