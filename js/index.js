@@ -1,4 +1,5 @@
 var $ = require('jquery');
+require('flexibility')
 var currentNavigationSelected; //only load iframes currently selected (much much much faster)
 
 
@@ -88,5 +89,5 @@ function fillIFrameWithContent(iframe){
 function adjustIFrameHeight(iFrame) {
   console.log("adjust height"); 
   console.log(iFrame.contentWindow.document.body.offsetHeight)
-  return $(iFrame).height(iFrame.contentWindow.document.body.offsetHeight + 'px');
+  return $(iFrame).height(100+iFrame.contentWindow.document.body.offsetHeight + 'px');
 }
