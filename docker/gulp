@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+pushd "$(dirname $0)" > /dev/null
+
+./run dr.chefkoch.net/display-pattern-lab-dev node_modules/.bin/gulp $@
