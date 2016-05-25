@@ -1,5 +1,4 @@
 var $ = require('jquery');
-require('flexibility')
 var currentNavigationSelected; //only load iframes currently selected (much much much faster)
 
 

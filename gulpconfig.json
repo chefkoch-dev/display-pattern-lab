@@ -12,5 +12,12 @@
     "namespaces": {
       "display-patterns": "vendor/chefkoch/display-patterns/patterns"
     }
+  },
+  "modernizr": {
+    "files": [
+      "vendor/chefkoch/display-patterns/{,**/}*.scss",
+      "vendor/chefkoch/display-patterns/{,**/}*.js"
+    ],
+    "dest": "js/vendor/modernizr/"
   }
 }

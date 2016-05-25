@@ -5,3 +5,4 @@
 /composer.phar
 /.vagrant
 /build
+/js/vendor/modernizr

@@ -4,7 +4,6 @@ var config = require('./gulpconfig.json');
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
-var postcssFlexibility = require('postcss-flexibility');
 var browserSync = require('browser-sync').create();
 var shell = require('gulp-shell');
 var sass = require('gulp-sass');
@@ -12,6 +11,7 @@ var concat = require('gulp-concat');
 var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var batch = require('gulp-batch');
+var modernizr = require('gulp-modernizr');
 
 
 gulp.task('default', ['serve']);
@@ -32,7 +32,7 @@ gulp.task('serve', ['build', 'watch'], function() {
 });
 
 
-gulp.task('build', ['twig', 'sass', 'lab-js', 'lab-js-vendor', 'lab-sass', 'assets']);
+gulp.task('build', ['modernizr', 'twig', 'sass', 'lab-js', 'lab-js-vendor', 'lab-sass', 'assets']);
 
 
 gulp.task('watch', function(){
@@ -49,7 +49,7 @@ gulp.task('watch', function(){
           browserSync.reload();
           done();
       })
-    }))
+    }));
 
     gulp.watch(config.scss.rootDirectory + "/**/*.scss", function() { gulp.start('sass'); });
     
@@ -67,7 +67,7 @@ gulp.task('watch', function(){
     
     gulp.watch(config.js.rootDirectory + "/**/*.js", function() { gulp.start('lab-js');browserSync.reload(); });
 
-})
+});
 
 
 gulp.task('lab-sass', function() {
@@ -81,8 +81,7 @@ gulp.task('lab-sass', function() {
 
 gulp.task('sass', function() {
     var processors = [
-        autoprefixer({browsers: ['last 3 versions']}),
-        postcssFlexibility()
+        autoprefixer({browsers: ['last 3 versions']})
     ];
     return gulp.src(config.scss.indexFile)
         .pipe(plumber())
@@ -126,4 +125,12 @@ gulp.task('postcss', function () {
     return gulp.src("output/css")
         .pipe(postcss(processors))
         .pipe(gulp.dest('./dest'));
+});
+
+// Task: Build a customized modernizr build based on used tests
+// (customizr crawls the Sass and JS files and checks for usages, i.e. .no-svg { … })
+gulp.task('modernizr', function() {
+    return gulp.src(config.modernizr.files)
+        .pipe(modernizr())
+        .pipe(gulp.dest(config.modernizr.dest));
 });
