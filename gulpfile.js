@@ -84,10 +84,10 @@ gulp.task('sass', function() {
         autoprefixer({browsers: ['last 3 versions']})
     ];
     return gulp.src(config.scss.indexFile)
-        .pipe(plumber())
         .pipe(sass({
             includePaths: config.scss.includePaths
         }))
+        .pipe(plumber())
         .pipe(postcss(processors))
         .pipe(gulp.dest("output/css"))
         .pipe(browserSync.stream());
