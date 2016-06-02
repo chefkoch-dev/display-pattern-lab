@@ -83,10 +83,11 @@ gulp.task('sass', function() {
     var processors = [
         autoprefixer({browsers: ['last 3 versions']})
     ];
-    return gulp.src(config.scss.indexFile)
+    return gulp.src([config.scss.rootDirectory + "/**/*.scss", config.scss.indexFile])
         .pipe(plumber())
         .pipe(sass({
-            includePaths: config.scss.includePaths
+            includePaths: config.scss.includePaths,
+            outputStyle: "compact"
         }))
         .pipe(postcss(processors))
         .pipe(gulp.dest("output/css"))

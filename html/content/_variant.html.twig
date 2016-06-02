@@ -18,12 +18,12 @@
     {% set iframeContent %}
         <html>
         <head>
-            <link rel="stylesheet" type="text/css" href="{{ displayPatternsCss }}" />
+            {#TODO: add normalize?#}
+            <link rel="stylesheet" type="text/css" href="/css/base.css" />
+            <link rel="stylesheet" type="text/css" href="{{ variant.cssFile }}" />
         </head>
             <body>
-                <div class="ck-container">
-                    {{ patternHtml|raw }}
-                </div>
+                {{ patternHtml|raw }}
             </body>
         </html>
     {% endset %}

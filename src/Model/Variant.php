@@ -99,6 +99,19 @@ class Variant extends AbstractNode
         return $this->scssFile;
     }
 
+    public function getCssFile()
+    {
+        if ($this->getScssFile()) {
+            return $this->getScssFile()->getCssFileUrl();
+        }
+
+        if (!$this->isMainVariant() && $this->pattern->getMainVariant() && $this->pattern->getMainVariant()->getScssFile()) {
+            return $this->pattern->getMainVariant()->getScssFile()->getCssFileUrl();
+        }
+
+        return '404';
+    }
+
     /**
      * @return MarkdownFile
      */

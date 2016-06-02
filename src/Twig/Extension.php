@@ -7,33 +7,12 @@ use Symfony\Component\Yaml\Yaml;
 class Extension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
 
-    /** @var string */
-    private $cssFile;
-
-    /**
-     * @param string $cssFile
-     */
-    public function __construct($cssFile)
-    {
-        $this->cssFile = $cssFile;
-    }
-
     /**
      * @return string
      */
     public function getName()
     {
         return 'display-pattern-lab';
-    }
-
-    /**
-     * @return array
-     */
-    public function getGlobals()
-    {
-        return array(
-            'displayPatternsCss' => $this->cssFile
-        );
     }
 
     /**
