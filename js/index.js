@@ -23,7 +23,6 @@ $(function () {
     
     // only iframes within this navi section
     currentNavigationSelected.find("iframe").each(function(index, iFrame) {
-
       if (lastbreakPoint) {
         $(iFrame).removeClass(lastbreakPoint);
       }

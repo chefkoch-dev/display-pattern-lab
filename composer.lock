@@ -13,16 +13,16 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "158e3de123fb8693242b2908829348c05fd2b64a"
+                "reference": "4f3b22c24b38f3f79ca9a16b1d34c81858009de0"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-84f869.zip",
-                "reference": "158e3de123fb8693242b2908829348c05fd2b64a",
-                "shasum": "949156001308209392d39be4b4330b33ac0f7d9e"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-58f6a8.zip",
+                "reference": "4f3b22c24b38f3f79ca9a16b1d34c81858009de0",
+                "shasum": "d69321b123569825204644702af94e5456a5faad"
             },
             "type": "library",
-            "time": "2016-05-25 11:31:45"
+            "time": "2016-06-02 09:31:15"
         },
         {
             "name": "kzykhys/yaml-front-matter",
@@ -217,16 +217,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.0",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8"
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +274,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-01-25 21:22:18"
+            "time": "2016-05-30 09:11:59"
         }
     ],
     "packages-dev": [],
