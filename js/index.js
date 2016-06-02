@@ -40,26 +40,33 @@ $(function () {
 // Navigation / Content loading
 $(function() {
 
-  $('.ck-navigation a').click(function(ev) {
-    
-    var targetElement = $($(this).attr('href'));
+  var toggleContent = function(id) {
+    var targetElement = $(id)
     currentNavigationSelected = targetElement
-    
+
     $('.navigatable-content').hide();
-    
+
     // init all iframes that can be found inside
     toArray(targetElement.find("iframe"))
-    .forEach(initIFrame)
-    
+        .forEach(initIFrame)
+
     targetElement.show();
     targetElement.parents('.navigatable-content').show();
     targetElement.find('.navigatable-content').show();
+  }
 
+  $('.ck-navigation a').click(function(ev) {
+    
+    toggleContent($(this).attr('href'));
 
     return false;  // preventDefault + stopPropagation
   });
 
   $('.navigatable-content').hide();
+
+  if (document.location.hash) {
+    toggleContent(document.location.hash);
+  }
 });
 
 
