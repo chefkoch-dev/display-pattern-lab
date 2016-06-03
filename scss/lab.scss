@@ -62,12 +62,15 @@ iframe {
 }
 
 // !breakpoint missing
-iframe.small {
+iframe.xsmall {
   width: 320px;
+}
+iframe.small {
+    width: 768px;
 }
 
 iframe.medium {
-  width: 768px;
+  width: 800px;
 }
 iframe.desktop {
     width: 1024px;
