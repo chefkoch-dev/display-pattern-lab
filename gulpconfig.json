@@ -1,7 +1,11 @@
 {
   "scss": {
     "indexFile": "vendor/chefkoch/display-patterns/styles/base.scss",
-    "rootDirectory": "vendor/chefkoch/display-patterns/patterns"
+    "rootDirectory": "vendor/chefkoch/display-patterns/patterns",
+    "includePaths": [
+      "vendor/chefkoch/display-patterns/patterns",
+      "vendor/chefkoch/display-patterns/node_modules"
+    ]
   },
   "js": {
     "indexFile": "js/index.js",
