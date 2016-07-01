@@ -13,16 +13,16 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "419e7a2d51f64c699be4a89238f52bef9bf4853e"
+                "reference": "067a766f678975838a9024e6a982ff386122c25d"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-21c9b8.zip",
-                "reference": "419e7a2d51f64c699be4a89238f52bef9bf4853e",
-                "shasum": "d1521d3ce86fd6aee3780b8220e75c6858c463df"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-a9aab1.zip",
+                "reference": "067a766f678975838a9024e6a982ff386122c25d",
+                "shasum": "255841d688bca69e36e684e725db78a2b02f7df6"
             },
             "type": "library",
-            "time": "2016-06-24 15:02:57"
+            "time": "2016-07-01 13:51:34"
         },
         {
             "name": "kzykhys/yaml-front-matter",
@@ -119,16 +119,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.0.7",
+            "version": "v3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "39e5f3d533d07b5416b9d7aad53a27f939d4f811"
+                "reference": "3eb4e64c6145ef8b92adefb618a74ebdde9e3fe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/39e5f3d533d07b5416b9d7aad53a27f939d4f811",
-                "reference": "39e5f3d533d07b5416b9d7aad53a27f939d4f811",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/3eb4e64c6145ef8b92adefb618a74ebdde9e3fe9",
+                "reference": "3eb4e64c6145ef8b92adefb618a74ebdde9e3fe9",
                 "shasum": ""
             },
             "require": {
@@ -164,20 +164,20 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-13 18:03:36"
+            "time": "2016-06-29 05:40:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.7",
+            "version": "v3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "fd2f945960998753de764109a26bcb8d08783bfa"
+                "reference": "d7dfe7f9915916195ed146cf81a5ac74b5095751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/fd2f945960998753de764109a26bcb8d08783bfa",
-                "reference": "fd2f945960998753de764109a26bcb8d08783bfa",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d7dfe7f9915916195ed146cf81a5ac74b5095751",
+                "reference": "d7dfe7f9915916195ed146cf81a5ac74b5095751",
                 "shasum": ""
             },
             "require": {
@@ -213,7 +213,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:33:26"
+            "time": "2016-06-29 05:40:00"
         },
         {
             "name": "twig/twig",
