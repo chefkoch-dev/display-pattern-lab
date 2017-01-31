@@ -12,16 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "ssh://git@jira.chefkoch.de:7999/components/display-patterns.git",
-                "reference": "1b2c21f659e34567412a04e7cf630f71a2fce473"
+                "reference": "014dbd69d81cfb82052c438c21610ee0bea9145f"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-903443.zip",
-                "reference": "1b2c21f659e34567412a04e7cf630f71a2fce473",
-                "shasum": "410e3d5260416619a6b729ca7e7ffecfada78cef"
+                "url": "http://fridge.app.intern.dev.chefkoch.de/dist/chefkoch-display-patterns-dev-master-3b7d1b.zip",
+                "reference": "014dbd69d81cfb82052c438c21610ee0bea9145f",
+                "shasum": "07131e0f9a2d4932b9d2dcc1e2b2c53029c00a16"
             },
             "type": "library",
-            "time": "2017-01-13 10:18:35"
+            "time": "2017-01-31 13:34:48"
         },
         {
             "name": "kzykhys/yaml-front-matter",
